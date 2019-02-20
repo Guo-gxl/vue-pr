@@ -28,15 +28,15 @@ Mock.mock("/news/index", "post", produceNewsData);
 //以上是mock循环50个的新闻列表..........................................................................................
 
 //轮播图
-var arr = [];
-for (let i = 0; i < 10; i++) {
-  let newArticleObject = {
-    name: Random.cname(),
-    content: Random.csentence(5, 10),
-    id: i
-  };
-  arr.push(newArticleObject); //将模拟的数据放到数组中
-}
+// var arr = [];
+// for (let i = 0; i < 10; i++) {
+//   let newArticleObject = {
+//     name: Random.cname(),
+//     content: Random.csentence(5, 10),
+//     id: i
+//   };
+//   arr.push(newArticleObject); //将模拟的数据放到数组中
+// }
 
 // let newsDate=Mock.mock('/news/index2', 'post' , {
 //   'articles|50':[{
@@ -52,20 +52,20 @@ for (let i = 0; i < 10; i++) {
 
 
 //轮播图..............................................................................................................
-const fxlunbotu = function() {
-var lunbo = [];
-for (let i = 0; i < 5; i++) {
-  let newArticleObject = {
-    img: Random.dataImage("300x250", "轮播图"),
-    id: i
-  };
-  lunbo.push(newArticleObject); //将模拟的数据放到数组中
-}
-return {
-  lunbo:lunbo
-};
-}
-Mock.mock("/lunbotu/index", "post", fxlunbotu);
+// const fxlunbotu = function() {
+// var lunbo = [];
+// for (let i = 0; i < 5; i++) {
+//   let newArticleObject = {
+//     img: Random.dataImage("300x250", "轮播图"),
+//     id: i
+//   };
+//   lunbo.push(newArticleObject); //将模拟的数据放到数组中
+// }
+// return {
+//   lunbo:lunbo
+// };
+// }
+// Mock.mock("/lunbotu/index", "post", fxlunbotu);
 //轮播图.......................................................................................................................
 
 // 数据的删除操作..............................................................................

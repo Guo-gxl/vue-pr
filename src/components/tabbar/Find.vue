@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h3>Find</h3>
     <mt-swipe :auto="4000">
       <!--在组件中使用v-for循环一定要使用key -->
       <mt-swipe-item  v-for="item in lunbotuList">

@@ -1,14 +1,22 @@
 <template>
  <div>
-    <div class="add">
+			<ul class="mui-table-view">
+				<li class="mui-table-view-cell mui-media" v-for="item in list">
+					<a href="javascript:;">
+						<img class="mui-media-object mui-pull-left" src="./../../img/tou.png">
+						<div class="mui-media-body">
+							{{item.name}}
+							<p>{{item.content}}</p>
+						</div>
+					</a>
+				</li>
+			</ul>
+      <br>
+         请输入评论内容
+       <div class="add">
       <textarea v-model="obj.content"></textarea>
-      <button @click="addList">添加</button>
+      <button class="mui-btn mui-btn-block mui-btn-primary" @click="addList">添加</button>
     </div>
-    <ul>
-      <li v-for="item in list">
-        {{item.name}}:{{item.content}}
-      </li>
-    </ul>
   </div>
 </template>
 
@@ -24,6 +32,7 @@ data() {
         name: "",
         content: ""
       },
+      text:"",
       // namereturn:this.$store.state.user.name
 
     };
@@ -63,8 +72,7 @@ data() {
     addList() {
        //console.log("****"+this.obj);
        console.log(this.$store.state.user+"dasdsadasdsa")
-       text=typeof(this.$store.state.user)
-       console.log(text+"5456456456456456")
+      //  text=typeof(this.$store.state.user)
       //  if(this.$store.state.user){
       //  this.obj.name=this.$store.state.user.name,
       //  this.$http
@@ -79,7 +87,7 @@ data() {
       //      this.list = res.data.data;
       //    })
       //    }
-         if(text=='undefined'){
+         if(typeof(this.$store.state.user)=='undefined'){
           this.$notify({
                             message: '您还未登录',
                             duration: 3000
@@ -125,29 +133,28 @@ data() {
 </script>
 
 <style lang="scss" scoped>
-.cmt-container {
-  h3 {
-    font-size: 18px;
-  }
+
   textarea {
     font-size: 14px;
-    height: 85px;
-    margin: 0;
+    height: 150px;
+    width: 94%;
+    margin-left:3%;
+    
   }
+  .mui-table-view{
+     width: 94%;
+    margin-left:3%;
+  }
+  .mui-btn-block{
+    padding: 20px 0;
+    margin-bottom: 0px;
+     width: 94%;
+    margin-left:3%;
+}
 
-  .cmt-list {
-    margin: 5px 0;
-    .cmt-item {
-      font-size: 13px;
-      .cmt-title {
-        line-height: 30px;
-        background-color: #ccc;
-      }
-      .cmt-body {
-        line-height: 35px;
-        text-indent: 2em;
-      }
-    }
-  }
+li{border: none}
+p{word-break:normal;
+white-space:pre-warp;
+word-wrap:break-word;
 }
 </style>

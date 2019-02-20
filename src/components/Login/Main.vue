@@ -48,7 +48,8 @@
         methods: {
             login () {
                 this.$store.state.isLogin='0'
-                this.$router.replace('/login')
+				this.$router.replace('/login')
+				delete(this.$store.state.user)
             },
             logout () {
                 this.$store.dispatch('logout').then(() => {

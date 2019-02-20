@@ -1,24 +1,24 @@
 <template>
-  <section class="financial-list">
-    <section class="collect" @click="jumpPage">
-      <aside>
-        <h2>{{newsDate.title}}</h2>
-        <section class="Cleft clearfix">
-          <img class="fl" src="#" style="width:0.24rem;height:0.2rem;">
-          <span class="fl">{{newsDate.author_name}}</span>
-        </section>
-        <section class="Cright">
-          <img src="#" style="width:0.2rem;height:0.2rem;">
-          <span>{{newsDate.date | getYMD}}</span>
-        </section>
-        <div style="clear: both"></div>
-      </aside>
-      <aside>
-        <img :src="newsDate.pic" style="border-radius: 0.2rem;">
-      </aside>
-      <div style="clear: both"></div>
-    </section>
-  </section>
+
+			
+			<div class="mui-card" @click="jumpPage">
+				<div class="mui-card-content" >
+					<img :src="newsDate.pic" alt="" width="100%"/>
+				</div>
+				<div class="mui-card-content">
+					<div class="mui-card-content-inner">
+						<p>{{newsDate.date | getYMD}}</p>
+						<p style="color: #333;">{{newsDate.title}}</p>
+					</div>
+				</div>
+				<div class="mui-card-footer">
+					<a class="mui-card-link"></a>
+					{{newsDate.author_name}}
+				</div>
+			</div>
+			
+			
+			
 </template>
  
 <script>
@@ -44,10 +44,10 @@ export default {
 <style scoped>
 .financial-list {
   width: 100%;
-  height: 100%;
+  height: 200px;
   background-color: white;
   padding: 0.28rem 0;
-  border-bottom: 1px solid #ccc;
+  border-top: 5px solid #ccc;
 }
  
 .financial-list .collect {
@@ -61,7 +61,7 @@ export default {
 }
  
 .financial-list .collect aside:nth-of-type(2) {
-  width: 32%;
+  width: 100%;
   height: 2rem;
   float: left;
   margin-left: 0.3rem;
@@ -69,18 +69,15 @@ export default {
  
 .financial-list .collect h2 {
   width: 100%;
-  height: 0.96rem;
-  font-size: 0.32rem;
+  height: 30px;
+  font-size: 10px;
   color: #333333;
-  line-height: 0.48rem;
   text-overflow: ellipsis;
   -o-text-overflow: ellipsis;
-  overflow: hidden;
 }
  
 .financial-list .collect aside:nth-of-type(2) img {
   width: 100%;
-  height: 100%;
 }
  
 .financial-list .collect aside .Cleft {
