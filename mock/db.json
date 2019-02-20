@@ -1,0 +1,160 @@
+{
+    "posts": [
+      { "id": 1, "title": "json-server", "author": "typicode" }
+    ],
+    "comments": [
+      { "id": 1, "body": "some comment", "postId": 1 }
+    ],
+    "lunbotu":[
+        { "id": 1,
+             "img": "https://inews.gtimg.com/newsapp_ls/0/7492659679_580328/0",
+             "src": "https://new.qq.com/omn/20190129/20190129A05XKA.html#p=1" 
+        },
+        { "id": 2, 
+            "img": "https://inews.gtimg.com/newsapp_ls/0/7486908003_640330/0",
+             "src": "https://new.qq.com/omn/20190128A0F3ON00" 
+        },
+        { "id": 3,
+             "img": "https://inews.gtimg.com/newsapp_ls/0/7492999638_580328/0",
+             "src": "https://new.qq.com/omn/20190128/20190128A1ASMM.html#p=1" 
+        },
+        {    "id": 4,
+             "img": "https://inews.gtimg.com/newsapp_ls/0/7493124422_580328/0",
+             "src": "https://new.qq.com/omn/20190129/20190129A07FJ9.html#p=1" 
+        }
+    ],
+    "newslist":[
+         {
+          "id": 1,
+          "img":"https://inews.gtimg.com/newsapp_ls/0/7493124422_580328/0",
+          "title":"1",
+          "src":"https://inews.gtimg.com/newsapp_ls/0/7493124422_580328/0",
+          "add_time":"2018",
+          "click":"4",
+          "content":"<h1>asdasdasdasdasdasdasd</h1>"
+
+         },
+         {
+          "id": 2,
+          "img":"https://inews.gtimg.com/newsapp_ls/0/7493124422_580328/0",
+          "title":"2",
+          "src":"https://inews.gtimg.com/newsapp_ls/0/7493124422_580328/0",
+          "add_time":"2017",
+          "click":"7",
+          "content":"<h1>asdasdasdasdasdasdasd</h1>"
+
+         },
+         {
+          "id": 3,
+          "img":"https://inews.gtimg.com/newsapp_ls/0/7493124422_580328/0",
+          "title":"3",
+          "src":"https://inews.gtimg.com/newsapp_ls/0/7493124422_580328/0",
+          "add_time":"2019",
+          "click":"9",
+          "content":"<h1>asdasdasdasdasdasdasd</h1>"
+
+         }
+         ,
+         {
+          "id": 4,
+          "img":"https://inews.gtimg.com/newsapp_ls/0/7493124422_580328/0",
+          "title":"4",
+          "src":"https://inews.gtimg.com/newsapp_ls/0/7493124422_580328/0",
+          "add_time":"2016",
+          "click":"8",
+          "content":"<h1>asdasdasdasdasdasdasd</h1>"
+
+         }
+         ,
+         {
+          "id": 5,
+          "img":"https://inews.gtimg.com/newsapp_ls/0/7493124422_580328/0",
+          "title":"5",
+          "src":"https://inews.gtimg.com/newsapp_ls/0/7493124422_580328/0",
+          "add_time":"2015",
+          "click":"7",
+          "content":"<h1>asdasdasdasdasdasdasd</h1>"
+
+         }
+         ,
+         {
+          "id": 6,
+          "img":"https://inews.gtimg.com/newsapp_ls/0/7493124422_580328/0",
+          "title":"6",
+          "src":"https://inews.gtimg.com/newsapp_ls/0/7493124422_580328/0",
+          "add_time":"2019",
+          "click":"5",
+          "content":"<h1>asdasdasdasdasdasdasd</h1>"
+
+         },
+         {
+          "id": 7,
+          "img":"https://inews.gtimg.com/newsapp_ls/0/7493124422_580328/0",
+          "title":"1",
+          "src":"https://inews.gtimg.com/newsapp_ls/0/7493124422_580328/0",
+          "add_time":"2018",
+          "click":"4",
+          "content":"<h1>asdasdasdasdasdasdasd</h1>"
+
+         },
+         {
+          "id": 8,
+          "img":"https://inews.gtimg.com/newsapp_ls/0/7493124422_580328/0",
+          "title":"2",
+          "src":"https://inews.gtimg.com/newsapp_ls/0/7493124422_580328/0",
+          "add_time":"2017",
+          "click":"7",
+          "content":"<h1>asdasdasdasdasdasdasd</h1>"
+
+         },
+         {
+          "id": 9,
+          "img":"https://inews.gtimg.com/newsapp_ls/0/7493124422_580328/0",
+          "title":"3",
+          "src":"https://inews.gtimg.com/newsapp_ls/0/7493124422_580328/0",
+          "add_time":"2019",
+          "click":"9",
+          "content":"<h1>asdasdasdasdasdasdasd</h1>"
+
+         }
+         ,
+         {
+          "id": 10,
+          "img":"https://inews.gtimg.com/newsapp_ls/0/7493124422_580328/0",
+          "title":"4",
+          "src":"https://inews.gtimg.com/newsapp_ls/0/7493124422_580328/0",
+          "add_time":"2016",
+          "click":"8",
+          "content":"<h1>asdasdasdasdasdasdasd</h1>"
+
+         }
+         ,
+         {
+          "id": 11,
+          "img":"https://inews.gtimg.com/newsapp_ls/0/7493124422_580328/0",
+          "title":"5",
+          "src":"https://inews.gtimg.com/newsapp_ls/0/7493124422_580328/0",
+          "add_time":"2015",
+          "click":"7",
+          "content":"<h1>asdasdasdasdasdasdasd</h1>"
+
+         }
+         ,
+         {
+          "id": 12,
+          "img":"https://inews.gtimg.com/newsapp_ls/0/7493124422_580328/0",
+          "title":"6",
+          "src":"https://inews.gtimg.com/newsapp_ls/0/7493124422_580328/0",
+          "add_time":"2019",
+          "click":"5",
+          "content":"<h1>asdasdasdasdasdasdasd</h1>"
+
+         }
+    ],
+    "newsDate": [
+     {
+          
+     }
+   ],
+    "profile": { "name": "typicode" }
+  }
