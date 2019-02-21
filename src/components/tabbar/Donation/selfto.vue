@@ -30,11 +30,8 @@
             <el-form-item>
                 <input v-show="null" v-model="self.name" type="text">
             </el-form-item>
-             <el-form-item>
-                <input v-show="null" v-model="self.email" type="text">
-            </el-form-item>
             <div>
-				<button type="button" @click="register" class="mui-btn mui-btn-block mui-btn-primary">登记</button>
+				<button type="button" @click="register" class="mui-btn mui-btn-block mui-btn-primary">提交</button>
 			</div>
         </el-form>
     </el-row>
@@ -54,6 +51,7 @@
 
 <script>
 import Distpicker from'./v-distpicker/src/Distpicker.vue'
+import { Toast } from "mint-ui";
 export default {
     data(){
         return{
@@ -93,19 +91,22 @@ export default {
                     console.log(this.self+'5')
                     console.log(res.data+'3')
                     this.$store.dispatch('login', res.data).then(() => {
-                        this.$notify({
-                            type: 'success',
-                            message: '登记成功，感谢您的爱心',
-                            duration: 3000
-                        })
+                          // this.$notify({
+                        //     type: 'success',
+                        //     message: '登记成功，我们将很快处理您的订单',
+                        //     duration: 3000
+                        // })
+                        Toast('提交成功，我们将很快处理您的订单');
                         this.$router.replace('/donation')
                     })
                 } else {
-                    this.$message({
-                        type: 'error',
-                        message: '请输入注册信息',
-                        showClose: true
-                    })
+                      // this.$Toast({
+                    //      type: 'error',
+                    //     message: '请将信息输入完整再提交',
+                    //      showClose: true
+
+                    // })
+                    Toast('请将信息输入完整再提交');
                 }
             }).catch((err) => {
                 this.$message({

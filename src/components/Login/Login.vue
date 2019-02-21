@@ -30,6 +30,7 @@
 </template>
 
 <script>
+import { Toast } from "mint-ui";
     export default {
         created:function () {
             this.$emit('public_footer', false);
@@ -50,20 +51,24 @@
                     this.$emit('public_headern', true);
                    this.$emit('public_footer', true);
                     this.$store.dispatch('login', res.data).then(() => {
-                        this.$notify({
-                            type: 'success',
-                            message: '欢迎你,' + res.data.name + '!',
-                            duration: 1000,
-                        })
+                        // this.$notify({
+                        //     type: 'success',
+                        //     message: '欢迎你,' + res.data.nickName + '!',
+                        //     duration: 1000,
+                        // })
+                        Toast({
+                                 message: '欢迎你,' + res.data.nickName + '!',
+                            });
                         this.$store.state.isLogin='100'
                         this.$router.replace('/myinfo/main')
                     })
                 } else {
-                    this.$message({
-                        type: 'error',
-                        message: '用户名或密码错误',
-                        showClose: true
-                    })
+                    // this.$message({
+                    //     type: 'error',
+                    //     message: '用户名或密码错误',
+                    //     showClose: true
+                    // })
+                    Toast('用户名或密码错误');
                 }
             }).catch((err) => {
                 this.$message({

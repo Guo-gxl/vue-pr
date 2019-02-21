@@ -27,27 +27,27 @@ const produceNewsData = function() {
 Mock.mock("/news/index", "post", produceNewsData);
 //以上是mock循环50个的新闻列表..........................................................................................
 
-//轮播图
-// var arr = [];
-// for (let i = 0; i < 10; i++) {
-//   let newArticleObject = {
-//     name: Random.cname(),
-//     content: Random.csentence(5, 10),
-//     id: i
-//   };
-//   arr.push(newArticleObject); //将模拟的数据放到数组中
-// }
+// 轮播图
+var arr = [];
+for (let i = 0; i < 5; i++) {
+  let newArticleObject = {
+    name: Random.cname(),
+    content: Random.csentence(15, 20),
+    id: i
+  };
+  arr.push(newArticleObject); //将模拟的数据放到数组中
+}
 
-// let newsDate=Mock.mock('/news/index2', 'post' , {
-//   'articles|50':[{
-//       'id|+1': 1,
-//       'title': '@csentence(5, 30)', //  Random.csentence( min, max )
-//       'thumbnail_pic_s': '@dataImage("300x250", "mock的图片")', // Random.dataImage( size, text ) 生成一段随机的 Base64 图片编码
-//       'author_name': '@cname()', // @cname() 随机生成一个常见的中文姓名
-//       'date': '@datetime("yyyy-MM-dd A HH:mm:ss")', // Random.date()指示生成的日期字符串的格式,默认为yyyy-MM-dd；Random.time() 返回一个随机的时间字符串
-//       'paragraph':'@cparagraph( 10, 30 )',//加入中文字段
-//    }]
-// });
+let newsDate=Mock.mock('/news/index2', 'post' , {
+  'articles|50':[{
+      'id|+1': 1,
+      'title': '@csentence(5, 30)', //  Random.csentence( min, max )
+      'thumbnail_pic_s': '@dataImage("300x250", "mock的图片")', // Random.dataImage( size, text ) 生成一段随机的 Base64 图片编码
+      'author_name': '@cname()', // @cname() 随机生成一个常见的中文姓名
+      'date': '@datetime("yyyy-MM-dd A HH:mm:ss")', // Random.date()指示生成的日期字符串的格式,默认为yyyy-MM-dd；Random.time() 返回一个随机的时间字符串
+      'paragraph':'@cparagraph( 10, 30 )',//加入中文字段
+   }]
+});
 
 
 

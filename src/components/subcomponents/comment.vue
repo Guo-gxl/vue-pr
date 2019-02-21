@@ -12,7 +12,7 @@
 				</li>
 			</ul>
       <br>
-         请输入评论内容
+         <div class="mse">请输入评论内容</div>
        <div class="add">
       <textarea v-model="obj.content"></textarea>
       <button class="mui-btn mui-btn-block mui-btn-primary" @click="addList">添加</button>
@@ -114,7 +114,7 @@ data() {
   //       });
   //   }
           tolist(){
-            this.obj.name=this.$store.state.user.name,
+            this.obj.name=this.$store.state.user.nickName,
        this.$http
          .post("/listAdd", {
            params: {
@@ -133,7 +133,9 @@ data() {
 </script>
 
 <style lang="scss" scoped>
-
+.mse{
+  margin-left:3%;
+}
   textarea {
     font-size: 14px;
     height: 150px;
@@ -144,6 +146,7 @@ data() {
   .mui-table-view{
      width: 94%;
     margin-left:3%;
+    background-color: transparent
   }
   .mui-btn-block{
     padding: 20px 0;
@@ -151,6 +154,7 @@ data() {
      width: 94%;
     margin-left:3%;
 }
+
 
 li{border: none}
 p{word-break:normal;

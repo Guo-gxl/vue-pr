@@ -17,7 +17,7 @@
     <hr>
 
     <!-- 内容区域 -->
-     <div class="content" v-html="newsinfo.paragraph"></div> 
+     <div class="content" v-html="newsinfo.content"></div> 
 
     <!-- 评论子组件区域 -->
       <comment-box></comment-box>
@@ -67,6 +67,10 @@ export default {
 </script>
 
 <style lang="scss">
+.content{
+  width: 94%;
+  margin-left:3%;
+}
 .newsinfo-container {
   padding: 0 4px;
   .title {
