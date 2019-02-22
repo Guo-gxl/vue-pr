@@ -34,7 +34,7 @@ export default {
   methods: {
     getNewsList() {
       // 获取新闻列表
-      this.$http.get("http://localhost:3000/newslist").then(result => {
+      this.$http.get("http://localhost:3000/find/123").then(result => {
         if (result.status === 200) {
           // 如果没有失败，应该把数据保存到 data 上
           this.newslist = result.body;

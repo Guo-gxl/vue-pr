@@ -22,7 +22,8 @@
             </el-form-item> 
             <el-form-item>
                   <label>详细地址</label>
-                <input v-model="self.tolocal" type="text" class="localtext" placeholder="请输入详细地址信息">
+                  <textarea v-model="self.tolocal" placeholder="请输入详细地址信息"></textarea>
+                <!-- <input v-model="self.tolocal" type="text" class="localtext" placeholder="请输入详细地址信息"> -->
             </el-form-item> 
             <el-form-item>
                 <label>联系电话</label>

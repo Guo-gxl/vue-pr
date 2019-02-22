@@ -9,10 +9,6 @@
     <el-row type="flex" justify="center" class="mui-content">
         <el-form ref="loginForm" :model="user" :rules="rules" class="mui-input-group">
             <el-form-item class="mui-input-row">
-                  <label>昵称</label>
-                <input v-model="user.nickName" type="text" required="required" class="mui-input-clear mui-input" placeholder="请输入账号">
-            </el-form-item> 
-            <el-form-item class="mui-input-row">
                   <label>账号</label>
                 <input v-model="user.name" type="text" required="required" class="mui-input-clear mui-input" placeholder="请输入账号">
             </el-form-item> 
@@ -20,6 +16,18 @@
                 <label>密码</label>
                 <input v-model="user.pass" type="password" required="required" class="mui-input-clear mui-input" placeholder="请输入账号">
             </el-form-item>
+            <el-form-item class="mui-input-row">
+                <label>性别</label>
+                <input v-model="user.sex" type="text" required="required" class="mui-input-clear mui-input" placeholder="请输入账号">
+            </el-form-item>
+            <el-form-item class="mui-input-row">
+                  <label>昵称</label>
+                <input v-model="user.nickName" type="text" required="required" class="mui-input-clear mui-input" placeholder="请输入账号">
+            </el-form-item>
+             <el-form-item class="mui-input-row">
+                  <label>手机号</label>
+                <input v-model="user.phone" type="text" required="required" class="mui-input-clear mui-input" placeholder="请输入账号">
+            </el-form-item>  
              <el-form-item class="mui-input-row">
                 <label>邮箱</label>
                 <input v-model="user.email" type="email" required="required" class="mui-input-clear mui-input" placeholder="请输入账号">
