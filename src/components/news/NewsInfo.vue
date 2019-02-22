@@ -18,7 +18,7 @@
     <hr>
 
     <!-- 内容区域 -->
-     <div class="content" v-html="newsinfo3.content"></div> 
+     <div v-html="newsinfo3.content"></div> 
 </div>
     <!-- 评论子组件区域 -->
       <comment-box></comment-box>

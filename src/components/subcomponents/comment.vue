@@ -6,7 +6,7 @@
 						<img class="mui-media-object mui-pull-left" src="./../../img/tou.png">
 						<div class="mui-media-body">
 							{{item.name}}
-							<p>{{item.content}}</p>
+							<p>{{item.con}}</p>
 						</div>
 					</a>
 				</li>
@@ -14,7 +14,7 @@
       <br>
          <div class="mse">请输入评论内容</div>
        <div class="add">
-      <textarea v-model="obj.content"></textarea>
+      <textarea v-model="obj.con"></textarea>
       <button class="mui-btn mui-btn-block mui-btn-primary" @click="addList">添加</button>
     </div>
   </div>
@@ -24,13 +24,13 @@
 import { Toast } from "mint-ui";
 export default {
 data() {
+    id: this.$route.params.id
     return {
       list: [],
       obj: {
         //将添加的数据存到obj对象中
-        id: "",
         name: "",
-        content: ""
+        con: ""
       },
       text:"",
       // namereturn:this.$store.state.user.name
@@ -43,35 +43,60 @@ data() {
             }
         },
   created() {
-    this.getData();
+     this.getData();
   },
   methods: {
-    // 查询列表数据
-    getData() {
-      this.$http.get("/list").then(res => {
-        console.log(res);
-        this.list = res.data.data;
-      });
-    },
+    //查询列表数据
+     getData() {
+        this.$http.post('http://localhost:3000/find/123/'+this.$route.params.id, { }).then(res=>{
+         console.log(res);
+         this.list = res.data.comments;
+       });
+     },
+    
 
-    // 删除列表数据
-    deleteList(id) {
-      this.$http
-        .post("/list", {
-          params: {
-            id: id
-          }
-        })
-        .then(res => {
-          console.log(res);
-          this.list = res.data.data;
-        });
-    },
+    addList(){
+      console.log(this.$route.params.id)               //获取文章ID
+      console.log(this.$store.state.user+"dasdsadasdsa")       //获取用户数据
+      if(typeof(this.$store.state.user)=='undefined'){          //如果用户没登录
+        this.$notify({
+          message: '您还未登录',                                 //告诉用户没登录
+          duration: 3000    
+          })
+          }                 
+         else{                                     //否则
+               this.tolist()               //执行tolost这个函数！！！！
+          }},
+
+       tolist(){
+
+           this.obj.name=this.$store.state.user.nickName,
+           this.obj.con=this.obj.con
+                            //重要！！！！！！！！
+       this.$http.post('http://localhost:3000/find/123/'+this.$route.params.id, { 
+                   
+                 name:this.$store.state.user.nickName,
+                 con:this.obj.con
+                                                          
+              })                                                                  //重要！！！！！！！！
+         .then(res => {                                                     //重要！！！！！！！！
+           // console.log("请求成功"+res.data.data);                        //重要！！！！！！！！
+           console.log(JSON.stringify(res.data)+'这是res');                                  //重要！！！！！！！！
+           this.list = res.data.comments;                                        //重要！！！！！！！！
+         })                                                                  //重要！！！！！！！！
+          }                                                                  //重要！！！！！！！！
+
+
+
+       }
+
+
+    
 
     // 增加列表数据
-    addList() {
+    //addList() {                                                //重要！！！！！！！！
        //console.log("****"+this.obj);
-       console.log(this.$store.state.user+"dasdsadasdsa")
+     //  console.log(this.$store.state.user+"dasdsadasdsa")    //重要！！！！！！！！
       //  text=typeof(this.$store.state.user)
       //  if(this.$store.state.user){
       //  this.obj.name=this.$store.state.user.name,
@@ -87,15 +112,15 @@ data() {
       //      this.list = res.data.data;
       //    })
       //    }
-         if(typeof(this.$store.state.user)=='undefined'){
-          this.$notify({
-                            message: '您还未登录',
-                            duration: 3000
-                        })
-        }
-        else{
-              this.tolist()
-         }},
+        //  if(typeof(this.$store.state.user)=='undefined'){                //重要！！！！！！！！
+        //   this.$notify({                                                //重要！！！！！！！！
+        //                     message: '您还未登录',                      //重要！！！！！！！！
+        //                     duration: 3000                              //重要！！！！！！！！
+        //                 })                                                //重要！！！！！！！！
+        // }//重要！！！！！！！！
+        // else{//重要！！！！！！！！
+        //       this.tolist()//重要！！！！！！！！
+        //  }},//重要！！！！！！！！
   //   },
 
   //   // 修改列表数据
@@ -113,22 +138,22 @@ data() {
   //         that.list = res.data.data;
   //       });
   //   }
-          tolist(){
-            this.obj.name=this.$store.state.user.nickName,
-       this.$http
-         .post("/listAdd", {
-           params: {
-             obj: this.obj
-           }
-         })
-         .then(res => {
-           // console.log("请求成功"+res.data.data);
-           console.log(res.data+'这是res');
-           this.list = res.data.data;
-         })
-          }
+      //     tolist(){                                                       //重要！！！！！！！！
+      //       this.obj.name=this.$store.state.user.nickName,                 //重要！！！！！！！！
+      //  this.$http                                                         //重要！！！！！！！！
+      //    .post("/listAdd", {                                               //重要！！！！！！！！
+      //      params: {                                                        //重要！！！！！！！！
+      //        obj: this.obj                                                   //重要！！！！！！！！
+      //      }                                                                  //重要！！！！！！！！
+      //    })                                                                  //重要！！！！！！！！
+      //    .then(res => {                                                     //重要！！！！！！！！
+      //      // console.log("请求成功"+res.data.data);                        //重要！！！！！！！！
+      //      console.log(res.data+'这是res');                                  //重要！！！！！！！！
+      //      this.list = res.data.data;                                        //重要！！！！！！！！
+      //    })  //重要！！！！！！！！
+      //     }//重要！！！！！！！！
     
-   }
+   
 };
 </script>
 
