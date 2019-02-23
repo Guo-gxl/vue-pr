@@ -48,9 +48,9 @@ data() {
   methods: {
     //查询列表数据
      getData() {
-        this.$http.post('http://localhost:3000/find/123/'+this.$route.params.id, { }).then(res=>{
-         console.log(res);
-         this.list = res.data.comments;
+        this.$http.post('http://localhost:3000/find/1234/'+this.$route.params.id).then(res=>{
+         console.log(res.data+"这是刚进来！！！！！！！！！！！！！！！！！！！！！！");
+         this.list =res.data.comments;
        });
      },
     
@@ -81,7 +81,8 @@ data() {
               })                                                                  //重要！！！！！！！！
          .then(res => {                                                     //重要！！！！！！！！
            // console.log("请求成功"+res.data.data);                        //重要！！！！！！！！
-           console.log(JSON.stringify(res.data)+'这是res');                                  //重要！！！！！！！！
+           console.log(JSON.stringify(res.data.comments)+'这是转换成JSON格式的添加后的');  
+           console.log(res.data.comments+"这是没有转换的！！！！！！")                                //重要！！！！！！！！
            this.list = res.data.comments;                                        //重要！！！！！！！！
          })                                                                  //重要！！！！！！！！
           }                                                                  //重要！！！！！！！！
