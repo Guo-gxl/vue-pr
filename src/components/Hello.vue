@@ -49,8 +49,9 @@ export default {
       //   this.newsListShow = res.articles;
       // });
        this.$http.get("http://localhost:3000/find/123").then(result => {
-        console.log(result);
+        console.log(result.body+'这是hello的result！！！！');
            this.newsListShow = result.body;
+           console.log(this.newsListShow+'这是news')
        });
     },
   }

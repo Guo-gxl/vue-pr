@@ -17,6 +17,9 @@ import toLogin from '../components/tabbar/Donation/toLogin.vue'
 import Donationindex from '../components/tabbar/Donation/index.vue'
 import Self from '../components/tabbar/Donation/self.vue'
 import Selfto from '../components/tabbar/Donation/selfto.vue'
+import Showneed from '../components/showlists/showneed.vue'
+import Showself from '../components/showlists/showself.vue'
+import SelfCell from '../components/showlists/SelfCell.vue'
 
 Vue.use(Router)
 
@@ -34,7 +37,25 @@ var router = new Router({
         {
               path: '/message',
               component: Message,
-              name:Message
+              name:Message,
+              children:[
+                 {
+                    path: 'main',
+                    name: 'Main',
+                    component: Main,
+                    meta:{auth1:true},
+                  },
+                  {
+                        path: 'showneed',
+                         name: 'tologin',
+                         component: Showneed,
+                       },
+                       {
+                             path:'showself',
+                             name:'Donationindex',
+                             component:Showself
+                       }
+              ]
         },
         {
               path: '/donation',
