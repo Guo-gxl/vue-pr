@@ -1,7 +1,7 @@
 <template>
 
-			
-			<div class="mui-card" @click="jumpPage">
+		 <router-link :to="'/find/newsinfo/' + this.newsDate.id">
+			<div class="mui-card">
 				<div class="mui-card-content" >
 					<img :src="newsDate.pic" alt="" width="100%"/>
 				</div>
@@ -15,7 +15,9 @@
 					<a class="mui-card-link"></a>
 					{{newsDate.author_name}}
 				</div>
-			</div>
+        </div>
+        </router-link>
+			
 			
 			
 			

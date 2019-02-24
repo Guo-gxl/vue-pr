@@ -1,5 +1,5 @@
 <template>
-    <div  class="app-container">
+    <div class="app-container">
 <nav class="mui-bar mui-bar-tab">
 			<router-link class="mui-tab-item" to="/find">
 				<span class="mui-icon mui-icon-extra mui-icon-extra-find"></span>

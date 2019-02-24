@@ -123,7 +123,8 @@ var router = new Router({
 
 
   ],
-  linkActiveClass: 'mui-active'
+  linkActiveClass: 'mui-active',
+  mode:'hash'
 })
 //把路由对象暴露出去
 export default router
