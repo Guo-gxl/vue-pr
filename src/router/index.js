@@ -20,6 +20,8 @@ import Selfto from '../components/tabbar/Donation/selfto.vue'
 import Showneed from '../components/showlists/showneed.vue'
 import Showself from '../components/showlists/showself.vue'
 import SelfCell from '../components/showlists/SelfCell.vue'
+import Listtologin from '../components/showlists/listtologin.vue'
+import Showlistindex from '../components/showlists/showlistsindex.vue'
 
 Vue.use(Router)
 
@@ -43,18 +45,47 @@ var router = new Router({
                     path: 'main',
                     name: 'Main',
                     component: Main,
-                    meta:{auth1:true},
+                    meta:{auth2:true},
+                  },
+                  {
+                        path: 'listtologin',
+                         name: 'listtologin',
+                         component: Listtologin,
+                  },
+                  {
+                        path: 'showlistindex',
+                         name: 'showlistindex',
+                         components: {
+                               default:Showlistindex,
+                               'showneed':Showneed,
+                               'showself':Showself
+
+                              
+                              }
+                        //  children:[
+                        //       {
+                        //             path: 'showneed',
+                        //              name: 'showneed',
+                        //              component: Showneed,
+                        //            },
+                        //            {
+                        //                  path:'showself',
+                        //                  name:'showself',
+                        //                  component:Showself
+                        //            }
+                        //  ]
                   },
                   {
                         path: 'showneed',
-                         name: 'tologin',
+                         name: 'showneed',
                          component: Showneed,
                        },
                        {
                              path:'showself',
-                             name:'Donationindex',
+                             name:'showself',
                              component:Showself
                        }
+                  
               ]
         },
         {
@@ -140,7 +171,17 @@ var router = new Router({
               path: '/selfto',
               name: 'Selfto',
               component: Selfto,
-        }
+        },
+        {
+            path: '/showneed',
+             name: 'showneed',
+             component: Showneed,
+           },
+           {
+                 path:'/showself',
+                 name:'showself',
+                 component:Showself
+           }
 
 
   ],

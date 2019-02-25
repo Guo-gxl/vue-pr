@@ -7,11 +7,11 @@
 			</router-link>
 			<router-link class="mui-tab-item" to="/donation">
 				<span class="mui-icon mui-icon-extra mui-icon-extra-gift"></span>
-				<span class="mui-tab-label">捐助</span>
+				<span class="mui-tab-label">捐赠</span>
 			</router-link>
 			<router-link class="mui-tab-item" to="/message">
-				<span class="mui-icon mui-icon-chat"><span class="mui-badge">9</span></span>
-				<span class="mui-tab-label">消息</span>
+				<span class="mui-icon mui-icon-chat"></span>
+				<span class="mui-tab-label">捐赠订单</span>
 			</router-link>
 			<router-link class="mui-tab-item" to="/myinfo">
 				<span class="mui-icon mui-icon-contact"></span>

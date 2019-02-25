@@ -4,16 +4,19 @@
 			<div class="mui-card">
 				<div class="mui-card-content">
 					<div class="mui-card-content-inner">
-						<p>快递单号：{{newsDate.OddNumbers}}</p>
-						<p style="color: #333;">联系电话：{{newsDate.phone}}</p>
-            <div class="mui-card-footer">
+						<p>省/市/区：{{newsDate.citydata}}</p>
+						<p style="color: #333;">详细地址：{{newsDate.tolocal}}</p>
+                        <p style="color: #333;">联系电话：{{newsDate.phone}}</p>
+                        <div class="mui-card-footer">
 					       <a class="mui-card-link"></a>
-            <button @click="del">删除记录</button>
-            </div>
+                        <button @click="del">取消订单</button>
+                        </div>
+                        
 					</div>
 				</div>
         </div>
         </router-link>
+        
      
 			
 			
@@ -24,9 +27,11 @@
 <script>
 import { Toast } from "mint-ui";
 export default {
-  name: 'SelfCell',
+  name: 'NeedCell',
   props: {
-    newsDate: Object
+    newsDate: Object,
+    
+
   },
   data () {
     return {
@@ -35,23 +40,23 @@ export default {
   computed: {
   },
   methods: {
-      del(){
+   del(){
        console.log(this.newsDate._id+'这是要删除的id！！！')
+       console.log(JSON.stringify(this.newsDate)+'这是从父组件传来的！！！！！')
 
-        this.$http.post("http://localhost:3000/self/delself",{
+        this.$http.post("http://localhost:3000/self/delneed",{
+            
             _id:this.newsDate._id
         }).then(result => {
         console.log(result.body+'这是result！！！！');
-                Toast({
+                             Toast({
                                  message: '已删除',
-                            });
-                            // this.$router.go(0)
-                            this.$router.replace('/message')                
+                            });  
+                            this.$router.replace('/message') 
           
            
        });
    }
-   
   }
 }
 </script>

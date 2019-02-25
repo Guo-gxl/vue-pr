@@ -100,6 +100,29 @@ require('./mock.js')
         　　} 
         })
 
+        router.beforeEach((to,from,next) => {   
+
+          if(to.matched.some( rm => rm.meta.auth2)){  
+          console.log(store.state.isLogin)
+          // 对路由进行验证     
+          if(store.state.isLogin=='100') {
+               // 已经登陆       
+          next({path:'/message'})
+              // 正常跳转到你设置好的页面     
+          }
+          else{       
+          // 未登录则跳转到登陆界面，query:{ Rurl: to.fullPath}表示把当前路由信息传递过去方便登录后跳转回来；
+          next({path:'/message/listtologin'})
+          } 
+          　　}
+          else{ 
+          　　　　　　next() 
+          　　} 
+          })
+
+
+        
+
     // router.beforeEach((to,from,next) => {   
     //     console.log(m.meta.auth) 
     //     if(to.matched.some( m => m.meta.auth)){  
