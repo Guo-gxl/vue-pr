@@ -3,7 +3,7 @@
 			<ul class="mui-table-view">
 				<li class="mui-table-view-cell mui-media" v-for="item in list">
 					<a href="javascript:;">
-						<img class="mui-media-object mui-pull-left" src="./../../img/tou.png">
+						<img class="mui-media-object mui-pull-left" :src="item.img">
 						<div class="mui-media-body">
 							{{item.name}}
 							<p>{{item.con}}</p>
@@ -76,6 +76,7 @@ data() {
        this.$http.post('http://localhost:3000/find/123/'+this.$route.params.id, { 
                    
                  name:this.$store.state.user.nickName,
+                 img:this.$store.state.user.avatar,
                  con:this.obj.con
                                                           
               })                                                                  //重要！！！！！！！！

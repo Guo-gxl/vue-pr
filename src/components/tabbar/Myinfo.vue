@@ -1,12 +1,8 @@
 <template>
 <div>
-  <transition>
-  <keep-alive>
     <router-view></router-view>
-  </keep-alive>
-</transition>
-        <router-link to="/myinfo/main" @click="btn" v-trigger v-trigger2 v-mydirective></router-link>
-       
+
+        <router-link to="/myinfo/main" v-trigger v-trigger2 v-mydirective></router-link>   
   </div>
 
 </template>

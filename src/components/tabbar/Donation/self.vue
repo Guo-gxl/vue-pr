@@ -1,19 +1,10 @@
 <template>
-<transition>
- <div class="img1">
-      <div> 
-      <header id="header" class="mui-bar mui-bar-nav">
-			<a @click="goback1" class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
-			<h1 class="mui-title">快递员上门</h1>
-		</header>  
-        </div> 
-   <br>     
-               <h1>请填写取件地址</h1>
-   <br>
-   <br>
+ <div>
+
      <el-row type="flex" justify="center">
         <el-form ref="loginForm" :model="self">
         <el-form-item>
+            <label>所在地区：</label>
             <v-distpicker @selected="sel">
             </v-distpicker>
             </el-form-item>
@@ -21,12 +12,12 @@
                 <input v-show="null" v-model="self.citydata" type="text">
             </el-form-item> 
             <el-form-item>
-                  <label>详细地址</label>
+                  <label>详细地址：</label>
                   <textarea v-model="self.tolocal" placeholder="请输入详细地址信息"></textarea>
                 <!-- <input v-model="self.tolocal" type="text" class="localtext" placeholder="请输入详细地址信息"> -->
             </el-form-item> 
             <el-form-item>
-                <label>联系电话</label>
+                <label>联系电话：</label>
                 <input v-model="self.phone" type="text" placeholder="请输入联系电话">
             </el-form-item>
             <el-form-item>
@@ -40,17 +31,7 @@
 			</div>
         </el-form>
     </el-row>
-
-   
-    <br>
-   <br> <br>
-   <br> <br>
-   <br> <br>
-   <br><br>
-   <br><br>
-   <br><br>
  </div>
-</transition>
 </template>
 
 
@@ -70,18 +51,8 @@ export default {
         },
     name:"demo",
     components: { Distpicker },
-        created:function () {
-            this.$emit('public_header', false);
-            this.$emit('public_headern', false);
-			this.$emit('public_footer', false);
-			
-        },
+        
         methods:{
-         goback1:function(){
-                this.$router.replace('/donation/index')
-                this.$emit('public_headern', true);
-                this.$emit('public_footer', true);
-            },
             
              sel: function(data) {
            this.citydata = data.province.value + data.city.value + data.area.value;
@@ -101,24 +72,10 @@ export default {
             console.log(valid+'2')
            this.$ajax.post('http://localhost:3000/self/vali', this.self).then((res) => {
                 if (res.data) {
-                    console.log(this.self+'5')
-                    console.log(res.data+'3')
-                    this.$store.dispatch('login', res.data).then(() => {
-                        // this.$notify({
-                        //     type: 'success',
-                        //     message: '登记成功，我们将很快处理您的订单',
-                        //     duration: 3000
-                        // })
                         Toast('提交成功，我们将很快处理您的订单');
                         this.$router.replace('/donation')
-                    })
+                    
                 } else {
-                    // this.$Toast({
-                    //      type: 'error',
-                    //     message: '请将信息输入完整再提交',
-                    //      showClose: true
-
-                    // })
                     Toast('请将信息输入完整再提交');
                 }
             }).catch((err) => {
@@ -161,7 +118,6 @@ export default {
 	float: right;
 }
 .mui-btn-block{
-padding: 20px 0;
     margin-bottom: 0px;
 }
 .localtext{
@@ -173,12 +129,6 @@ padding: 20px 0;
 .el-form{
     width: 80%;
 }
- .img1{
-    width: auto;
-    height: auto;
-    background: url('../../../img/donation.jpg') center;
-    background-size:auto;
-  }
   .v-enter{
 	opacity: 0;
 	}

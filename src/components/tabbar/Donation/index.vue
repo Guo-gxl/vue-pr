@@ -1,39 +1,58 @@
 <template>
  <div class="img1">
-   <br>
-   <br>
-          <router-link to="/self"><button type="button" class="mui-btn mui-btn-block">快递员上门</button></router-link>
-   <br>
-   <br>
-           <router-link to="/selfto"><button type="button" class="mui-btn mui-btn-block">已自行寄出</button></router-link>
-    <br>
-   <br> <br>
-   <br> <br>
-   <br> <br>
-   <br> <br>
-   <br> <br>
-   <br><br>
-   <br><br>
-   <br><br>
-   <br>
- </div>
+   <div class="mui-content">
+			<div style="padding: 10px 10px;">
+				<div class="mui-segmented-control">
+          <a class="mui-control-item" @click="self" :class="classself">
+            自行捐出
+            </a>
+           <a class="mui-control-item" @click="need" :class="classneed">
+            快递上门
+            </a>
+				</div>
+            <self-to v-show="selfto1"></self-to>
+            <need-to v-show="needto1"></need-to>
+      
+           <router-view name='selfto'></router-view>
+    	</div>
+			</div>     
+  </div>
 </template>
 
 
 <script>
+import SelfTo from './selfto.vue'
+import NeedTo from './self.vue'
 export default {
-        created:function () {
-            this.$emit('public_header', true);
-            this.$emit('public_headern', false);
-			this.$emit('public_footer', true);
-			
-    },
-    updated:function () {
-            this.$emit('public_header', true);
-            this.$emit('public_headern', false);
-			this.$emit('public_footer', true);
-			
-    },
+  components: {
+    'self-to':SelfTo,
+    'need-to':NeedTo
+  },
+  data(){  
+        return{
+            needto1:false,
+            selfto1:true, 
+            activeClass: -1, // 0为默认选择第一个，-1为不选择
+            classself:{'active':true},
+            classneed:{'active':false}
+            }
+         } ,
+     methods:{
+ self(){
+              
+                  this.selfto1 = true;
+                  this.needto1 = false;  
+                  this.classself={'active':true}
+                  this.classneed={'active':false}
+              },
+              need(){
+              
+                  this.selfto1 = false;
+                  this.needto1 = true;  
+                  this.classself={'active':false}
+                  this.classneed={'active':true}
+              }
+  },
     
 		
 			
@@ -46,7 +65,7 @@ export default {
 </script>
 
 
-<style lang='scss' scope>
+<style lang='scss' scoped>
 .mui-col-xs-5{
 	width: 50%;
 	float: right;
@@ -54,10 +73,8 @@ export default {
 .mui-btn-block{
 padding: 50px 0;
 }
- .img1{
-    width: auto;
-    height: auto;
-    background: url('../../../img/donation.jpg') center;
-    background-size:auto;
-  }
+  .active{
+    color: #fff;
+    background-color: #007aff;
+}
 </style>

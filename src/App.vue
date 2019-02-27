@@ -1,8 +1,11 @@
 <template>
     <div  class="app-container">
+		
         <!-- 顶部header区域 -->
+		
 		 <app-header v-if="header_show"></app-header>
-		 <app-headern v-if="headern_show"></app-headern>	 
+		 <app-headern v-if="headern_show"></app-headern>	
+		 
 <!-- <header v-if="tabType" id="header" class="mui-bar mui-bar-nav">
 			<a @click="goback" class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
 			<h1 class="mui-title">易捐</h1>
@@ -10,9 +13,8 @@
 		-->
 
 
-       
+       <transition name="app" mode="out-in">
         <!-- 中间放router-view 区域-->
-		<transition name="app">
         <router-view v-on:public_headern="public_headern" v-on:public_header="public_header" v-on:public_footer="public_footer"></router-view>
         </transition>
         <!-- 底部tabbar区域 -->
@@ -99,17 +101,17 @@ img{
 .app-leave-to{
 	opacity: 0;
 	transform: translateX(-100%);
-	position: absolute;
 }
 .app-enter-active,{
-	transition: all 0.3s ease
+	transition: all 0.1ms ease-in	
 }
 .app-leave-active{
-	transition: all 0.5s ease
+	transition: all 0.4s linear
 }
 .mui-col-xs-4 {
     width: 25%;
 }
+
 
 
 </style>

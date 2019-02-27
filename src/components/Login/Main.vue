@@ -3,10 +3,14 @@
 				<div>
 					<div class="mui-scroll">
                         <br>
-						<ul class="mui-table-view mui-table-view-chevron">
+						
+						<ul class="mui-table-view mui-table-view-chevron" >
 							<li class="mui-table-view-cell mui-media">
 								<a class="mui-navigate-right">
-									<img class="mui-media-object mui-pull-left head-img" id="head-img" src="">
+									<router-link to="/touxiang">
+									<img class="mui-media-object mui-pull-left head-img" :src="user.avatar" v-show="ava">
+									<img class="mui-media-object mui-pull-left head-img" src="./../../img/tou.png" v-show="defa">
+									</router-link> 
 									<div class="mui-media-body">
 										 {{user.nickName}}
 										<p class='mui-ellipsis'  v-if="user">账号:{{user.name}}</p>
@@ -14,6 +18,7 @@
 								</a>
 							</li>
 						</ul>
+						<router-view></router-view>
                         <br>
                         <br>
 						<ul class="mui-table-view mui-table-view-chevron">
@@ -45,6 +50,12 @@
 
 <script>
     export default {
+		data(){
+			return{
+			  ava:false,
+			  defa:true
+			}
+		},
         methods: {
             login () {
                 this.$store.state.isLogin='0'
@@ -61,7 +72,26 @@
             user () {
                 return this.$store.state.user
             }
-        }
+		},
+		created(){
+			    this.$http.post("http://localhost:3000/users/main",
+         {
+				 name:this.$store.state.user.name,
+				 nickName:this.$store.state.user.nickName
+         }).then(result => {
+        console.log(result.body+'!!!!!!'); 
+       })
+			console.log(JSON.stringify(this.$store.state.user)+"这是user！！！")
+			if(typeof(this.$store.state.user.avatar)=='undefined'){
+				this.ava=false,
+				this.defa=true
+			}
+			else{
+				this.ava=true,
+				this.defa=false
+			}
+			console.log(this.$store.state.user.avatar+"这是更改后！！！user！！！")
+		}
     }
 </script>
 <style lang="scss" scoped>

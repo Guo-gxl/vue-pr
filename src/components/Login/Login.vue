@@ -1,12 +1,11 @@
 <template>
   <div>
   <div> 
-      <transition name="slide-left">
+      
       <header  id="header" class="mui-bar mui-bar-nav">
 			<a @click="goback1" class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
 			<h1 class="mui-title">登录</h1>
 		</header>      
-      </transition>  
 </div>
 
     <el-row type="flex" justify="center" class="mui-content">
@@ -186,18 +185,12 @@ import { Toast } from "mint-ui";
            .mui-bar-tab .mui-tab-item.mui-active {
      color: #007aff; 
 }
-.slide-left-enter{
-	opacity: 0;
-	transform: translateX(100%)
-	}
-.slide-left-leave-to{
-	opacity: 0;
-	transform: translateX(-100%);
+.mui-bar{
+	position:absolute;
 }
-.slide-left-enter-active,{
-	transition: all 0.5s ease
+.mui-bar-nav{
+    position:absolute;
 }
-.slide-left-leave-active{
-	transition: all 0.5s ease
-}
+
+
 </style>

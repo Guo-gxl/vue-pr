@@ -22,6 +22,7 @@ import Showself from '../components/showlists/showself.vue'
 import SelfCell from '../components/showlists/SelfCell.vue'
 import Listtologin from '../components/showlists/listtologin.vue'
 import Showlistindex from '../components/showlists/showlistsindex.vue'
+import touxiang from '../components/Login/touxiang.vue'
 
 Vue.use(Router)
 
@@ -107,8 +108,23 @@ var router = new Router({
                           {
                                 path:'index',
                                 name:'Donationindex',
-                                component:Donationindex
-                          }
+                                components:{
+                                      default:Donationindex,
+                                      'self':Self,
+                                        'selfto':Selfto
+                              
+                              }
+                          },
+                          {
+                              path: 'self',
+                               name: 'self',
+                               component: Self,
+                             },
+                             {
+                                   path:'selfto',
+                                   name:'selfto',
+                                   component:Selfto
+                             }
 
               ],
         },
@@ -181,7 +197,12 @@ var router = new Router({
                  path:'/showself',
                  name:'showself',
                  component:Showself
-           }
+           },
+           {
+            path:'/touxiang',
+            name:'touxiang',
+            component:touxiang
+      }
 
 
   ],

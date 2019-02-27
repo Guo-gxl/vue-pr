@@ -1,21 +1,7 @@
 <template>
-<transition>
- <div class="img1">
-      <div> 
-      <header id="header" class="mui-bar mui-bar-nav">
-			<a @click="goback1" class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
-			<h1 class="mui-title">自行寄出</h1>
-		</header>  
-        </div> 
-   <br>     
-               <h1>请填写快递信息</h1>
-   <br>
-   <br>
-
+ <div>    
      <el-row type="flex" justify="center">
         <el-form ref="loginForm" :model="self">
-            <br>
-            <br>
             <el-form-item>
                   <label>快递单号</label>
                 <input v-model="self.OddNumbers" type="text" placeholder="请输入快递单号">
@@ -35,17 +21,7 @@
 			</div>
         </el-form>
     </el-row>
-
-   
-    <br>
-   <br> <br>
-   <br> <br>
-   <br> <br>
-   <br> <br>
-   <br> <br>
-   <br> <br>
  </div>
-</transition>
 </template>
 
 
@@ -65,18 +41,7 @@ export default {
         },
     name:"demo",
     components: { Distpicker },
-        created:function () {
-            this.$emit('public_header', false);
-            this.$emit('public_headern', false);
-			this.$emit('public_footer', false);
-			
-        },
         methods:{
-         goback1:function(){
-                this.$router.replace('/donation/index')
-                this.$emit('public_headern', true);
-                this.$emit('public_footer', true);
-            },
              register() {
                   this.$refs.loginForm.model.name=this.$store.state.user.name
             this.$refs.loginForm.model.nickName=this.$store.state.user.nickName
@@ -88,24 +53,10 @@ export default {
             console.log(valid+'2')
            this.$ajax.post('http://localhost:3000/self/selfto', this.self).then((res) => {
                 if (res.data) {
-                    console.log(this.self+'5')
-                    console.log(res.data+'3')
-                    this.$store.dispatch('login', res.data).then(() => {
-                          // this.$notify({
-                        //     type: 'success',
-                        //     message: '登记成功，我们将很快处理您的订单',
-                        //     duration: 3000
-                        // })
+                  
                         Toast('提交成功，我们将很快处理您的订单');
                         this.$router.replace('/donation')
-                    })
                 } else {
-                      // this.$Toast({
-                    //      type: 'error',
-                    //     message: '请将信息输入完整再提交',
-                    //      showClose: true
-
-                    // })
                     Toast('请将信息输入完整再提交');
                 }
             }).catch((err) => {
@@ -143,12 +94,6 @@ export default {
 
 
 <style lang='scss' scoped>
- .img1{
-    width: auto;
-    height: auto;
-    background: url('../../../img/donation.jpg') center;
-    background-size:auto;
-  }
   .v-enter{
 	opacity: 0;
 	}
@@ -162,7 +107,6 @@ export default {
 	transition: all 1s ease
 }
 .mui-btn-block{
-    padding: 20px 0;
     margin-bottom: 0px;
 }
 
