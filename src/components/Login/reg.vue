@@ -3,7 +3,7 @@
   <div> 
       <header id="header" class="mui-bar mui-bar-nav">
 			<a @click="gobacktologin" class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
-			<h1 class="mui-title">易捐1654564564</h1>
+			<h1 class="mui-title">注册账号</h1>
 		</header>        
 </div>
     <el-row type="flex" justify="center" class="mui-content">
@@ -14,27 +14,32 @@
             </el-form-item> 
             <el-form-item class="mui-input-row">
                 <label>密码</label>
-                <input v-model="user.pass" type="password" required="required" class="mui-input-clear mui-input" placeholder="请输入账号">
+                <input v-model="user.pass" type="password" required="required" class="mui-input-clear mui-input" placeholder="请输入密码">
             </el-form-item>
             <el-form-item class="mui-input-row">
                 <label>性别</label>
-                <input v-model="user.sex" type="text" required="required" class="mui-input-clear mui-input" placeholder="请输入账号">
+                <!-- <input v-model="user.sex" type="text" required="required" class="mui-input-clear mui-input" placeholder="请输入账号"> -->
+        <select v-model="user.sex" class="mui-input-clear mui-input" placeholder="未选择">
+            <option value="0" selected>请选择性别</option>
+            <option value="男">男</option>
+            <option value="女">女</option>
+        </select>
             </el-form-item>
             <el-form-item class="mui-input-row">
                   <label>昵称</label>
-                <input v-model="user.nickName" type="text" required="required" class="mui-input-clear mui-input" placeholder="请输入账号">
+                <input v-model="user.nickName" type="text" required="required" class="mui-input-clear mui-input" placeholder="请输入昵称">
             </el-form-item>
              <el-form-item class="mui-input-row">
                   <label>手机号</label>
-                <input v-model="user.phone" type="text" required="required" class="mui-input-clear mui-input" placeholder="请输入账号">
+                <input v-model="user.phone" type="text" required="required" class="mui-input-clear mui-input" placeholder="请输入手机号">
             </el-form-item>  
              <el-form-item class="mui-input-row">
                 <label>邮箱</label>
-                <input v-model="user.email" type="email" required="required" class="mui-input-clear mui-input" placeholder="请输入账号">
+                <input v-model="user.email" type="email" required="required" class="mui-input-clear mui-input" placeholder="请输入邮箱">
             </el-form-item>
             <div class="mui-content-padded">
 				<button type="button" @click="register" class="mui-btn mui-btn-block mui-btn-primary">注册</button>
-				<div class="link-area"><router-link to="myinfo/login">登录</router-link>
+				<div class="link-area"><router-link to="/login">登录</router-link>
 				</div>
 			</div>
         </el-form>
@@ -43,6 +48,7 @@
 </template>
 
 <script>
+import { Toast } from "mint-ui";
     export default {
         created:function () {
             this.$emit('public_header', false);
@@ -57,23 +63,25 @@
                
     this.$refs.loginForm.validate((valid) => {
         if (valid) {
-            
+            if(this.user.sex!='0'){
             this.$ajax.post('http://localhost:3000/users/validate', this.user).then((res) => {
                 if (res.data) {
                     this.$store.dispatch('login', res.data).then(() => {
-                        this.$notify({
-                            type: 'success',
-                            message: '注册成功，请登录',
-                            duration: 1000
-                        })
+                        // this.$notify({
+                        //     type: 'success',
+                        //     message: '注册成功，请登录',
+                        //     duration: 1000
+                        // })
+                        Toast('注册成功，请登录');
                         this.$router.replace('login')
                     })
                 } else {
-                    this.$message({
-                        type: 'error',
-                        message: '请输入注册信息',
-                        showClose: true
-                    })
+                    // this.$message({
+                    //     type: 'error',
+                    //     message: '请输入注册信息',
+                    //     showClose: true
+                    // })
+                     Toast('请将信息输入完整再提交');
                 }
             }).catch((err) => {
                 this.$message({
@@ -84,7 +92,9 @@
             })
         }
         else {
-            return false
+            Toast('请将信息输入完整再提交');
+        }
+        
         }
     })
 }
@@ -99,7 +109,8 @@
                     pass: [
                         {required: true, message: '密码不能为空', trigger: 'blur'}
                     ]
-                }
+                },
+                 user:{sex:'0'}//默认
             }
         }
     }

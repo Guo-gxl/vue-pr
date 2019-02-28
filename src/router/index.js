@@ -23,6 +23,11 @@ import SelfCell from '../components/showlists/SelfCell.vue'
 import Listtologin from '../components/showlists/listtologin.vue'
 import Showlistindex from '../components/showlists/showlistsindex.vue'
 import touxiang from '../components/Login/touxiang.vue'
+import Selfinfo from '../components/tabbar/Myinfo/Selfinfo.vue'
+import Cgname from '../components/tabbar/Myinfo/cgname.vue'
+import Cgphone from '../components/tabbar/Myinfo/cgphone.vue'
+import Cgemail from '../components/tabbar/Myinfo/cgemail.vue'
+import Cgpass from '../components/Login/cgpass.vue'
 
 Vue.use(Router)
 
@@ -139,6 +144,12 @@ var router = new Router({
                            component: Main,
                            meta:{auth:true},
                          },
+                         {
+                              path: 'selfinfo',
+                               name: 'selfinfo',
+                               component: Selfinfo,
+                             },
+
 
               ],
               
@@ -202,7 +213,32 @@ var router = new Router({
             path:'/touxiang',
             name:'touxiang',
             component:touxiang
-      }
+           },
+           {
+            path: '/selfinfo',
+             name: 'selfinfo',
+             component: Selfinfo,
+           },
+           {
+            path: '/cgname',
+             name: 'cgname',
+             component: Cgname,
+           },
+           {
+            path: '/cgphone',
+             name: 'cgphone',
+             component: Cgphone,
+           },
+           {
+            path: '/cgemail',
+             name: 'cgemail',
+             component: Cgemail,
+           },
+           {
+            path: '/cgpass',
+             name: 'cgpass',
+             component: Cgpass,
+           },
 
 
   ],

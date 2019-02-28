@@ -2,6 +2,21 @@
  <div>    
      <el-row type="flex" justify="center">
         <el-form ref="loginForm" :model="self">
+              <el-form-item>
+                  <label>快递公司</label>
+                <select v-model="self.Oddcom" class="mui-input-clear mui-input" placeholder="未选择">
+            <option value="0" selected>请选择快递公司</option>
+            <option value="百世汇通">百世汇通</option>
+            <option value="EMS">EMS</option>
+             <option value="申通快递">申通快递</option>
+            <option value="顺丰速运">顺丰速运</option>
+             <option value="天天快递">天天快递</option>
+            <option value="邮政快递">邮政快递</option>
+             <option value="圆通快递">圆通快递</option>
+            <option value="韵达快递">韵达快递</option>
+             <option value="中通快递">中通快递</option>
+                 </select>
+            </el-form-item> 
             <el-form-item>
                   <label>快递单号</label>
                 <input v-model="self.OddNumbers" type="text" placeholder="请输入快递单号">
@@ -32,6 +47,7 @@ export default {
     data(){
         return{
             self:{},
+            self:{Oddcom:'0'}//默认省市县
         }
     },
      computed: {
@@ -43,6 +59,7 @@ export default {
     components: { Distpicker },
         methods:{
              register() {
+                 if(this.self.Oddcom!='0'){
                   this.$refs.loginForm.model.name=this.$store.state.user.name
             this.$refs.loginForm.model.nickName=this.$store.state.user.nickName
             this.$refs.loginForm.model.emaiol=this.$store.state.user.email
@@ -71,6 +88,10 @@ export default {
             return false
         }
     })
+}
+else{
+     Toast('请将信息输入完整再提交');
+}
 //             onChangeProvince(data) {
 //       this.user.xtrysf = data.value
 //     },

@@ -4,8 +4,9 @@
 			<div class="mui-card">
 				<div class="mui-card-content">
 					<div class="mui-card-content-inner">
+            <p>快递公司：{{newsDate.Oddcom}}</p>
 						<p>快递单号：{{newsDate.OddNumbers}}</p>
-						<p style="color: #333;">联系电话：{{newsDate.phone}}</p>
+						<p>联系电话：{{newsDate.phone}}</p>
             <div class="mui-card-footer">
 					       <a class="mui-card-link"></a>
             <button @click="del">删除记录</button>

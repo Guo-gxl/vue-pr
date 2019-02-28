@@ -7,10 +7,8 @@
 						<ul class="mui-table-view mui-table-view-chevron" >
 							<li class="mui-table-view-cell mui-media">
 								<a class="mui-navigate-right">
-									<router-link to="/touxiang">
 									<img class="mui-media-object mui-pull-left head-img" :src="user.avatar" v-show="ava">
 									<img class="mui-media-object mui-pull-left head-img" src="./../../img/tou.png" v-show="defa">
-									</router-link> 
 									<div class="mui-media-body">
 										 {{user.nickName}}
 										<p class='mui-ellipsis'  v-if="user">账号:{{user.name}}</p>
@@ -18,14 +16,16 @@
 								</a>
 							</li>
 						</ul>
-						<router-view></router-view>
+						
                         <br>
                         <br>
+						<router-link to="/selfinfo">
 						<ul class="mui-table-view mui-table-view-chevron">
 							<li class="mui-table-view-cell">
 								<a class="mui-navigate-right">账号与安全</a>
 							</li>
 						</ul>
+						</router-link>
 						<ul class="mui-table-view mui-table-view-chevron">
 							<li class="mui-table-view-cell">
 								<a class="mui-navigate-right">身份信息</a>
@@ -45,6 +45,7 @@
 						</ul>
 					</div>
 				</div>
+				<router-view></router-view>
     </div>
 </template>
 

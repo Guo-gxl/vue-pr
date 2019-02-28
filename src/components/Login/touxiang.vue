@@ -55,7 +55,7 @@ export default {
          this.$refs.filElem.dispatchEvent(new MouseEvent('click'))
       },
        goback1:function(){
-                this.$router.replace('/myinfo/main')
+                this.$router.replace('/selfinfo')
                 this.$emit('public_headern', true);
                 this.$emit('public_footer', true);
             },
@@ -89,7 +89,7 @@ export default {
          Toast({
                                  message: '上传成功',
                             });
-        this.$router.replace('/myinfo/main')     
+        this.$router.replace('/selfinfo')     
            
        });
        this.$store.state.user.avatar=this.avatar
