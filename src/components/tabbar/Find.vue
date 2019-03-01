@@ -18,20 +18,8 @@
                             </li>
 		            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
                         <router-link to="/test">
-		                    <span class="mui-icon mui-icon-email"><span class="mui-badge">5</span></span>
-		                    <div class="mui-media-body">明星公益</div>
-                            </router-link>
-                            </li>
-		            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-                        <router-link to="/main">
 		                    <span class="mui-icon mui-icon-chatbubble"></span>
 		                    <div class="mui-media-body">物品需求</div>
-                            </router-link>
-                            </li>
-		            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-                        <router-link to="/find/newslist">
-		                    <span class="mui-icon mui-icon-location"></span>
-		                    <div class="mui-media-body">爱心榜单</div>
                             </router-link>
                             </li>
     </ul>
@@ -100,6 +88,6 @@ export default {
   
 }
 .mui-col-xs-4 {
-    width: 25%;   //调整中间的导航栏宽度
+    width: 50%;   //调整中间的导航栏宽度
 }
 </style>

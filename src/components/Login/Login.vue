@@ -16,7 +16,7 @@
             </el-form-item> 
             <el-form-item prop="pass" class="mui-input-row">
                 <label>密码</label>
-                <input v-model="user.pass" type="password" class="mui-input-clear mui-input" placeholder="请输入账号">
+                <input v-model="user.pass" type="password" class="mui-input-clear mui-input" placeholder="请输入密码">
             </el-form-item>
             <div class="mui-content-padded">
 				<button id='login' type="button" @click="login" class="mui-btn mui-btn-block mui-btn-primary">登录</button>

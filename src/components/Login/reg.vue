@@ -59,7 +59,7 @@ import { Toast } from "mint-ui";
             gobacktologin(){
              this.$router.replace('/login')
             },
-           register() {
+    register() {
                
     this.$refs.loginForm.validate((valid) => {
         if (valid) {

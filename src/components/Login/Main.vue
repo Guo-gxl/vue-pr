@@ -28,12 +28,7 @@
 						</router-link>
 						<ul class="mui-table-view mui-table-view-chevron">
 							<li class="mui-table-view-cell">
-								<a class="mui-navigate-right">身份信息</a>
-							</li>
-						</ul>
-						<ul class="mui-table-view mui-table-view-chevron">
-							<li class="mui-table-view-cell">
-								<a class="mui-navigate-right">关于易捐 <i class="mui-pull-right update">V3.1.0</i></a>
+								<a class="mui-navigate-right">关于 <i class="mui-pull-right update">V1.0.0</i></a>
 							</li>
 						</ul>
                         <br>
