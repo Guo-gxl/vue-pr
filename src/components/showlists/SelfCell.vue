@@ -1,20 +1,29 @@
 <template>
 
-		 <router-link to="">
 			<div class="mui-card">
 				<div class="mui-card-content">
 					<div class="mui-card-content-inner">
-            <p>快递公司：{{newsDate.Oddcom}}</p>
-						<p>快递单号：{{newsDate.OddNumbers}}</p>
-						<p>联系电话：{{newsDate.phone}}</p>
+             <p>爱心单号：{{newsDate._id}}</p>
+            <p style="color: #333;">用户昵称：{{newsDate.nickName}}</p>
+            <p style="color: #333;">快递公司：{{newsDate.Oddcom|filtersTextChange}}</p>
+						<p style="color: #333;">快递单号：{{newsDate.OddNumbers}}</p>
+            <p style="color: #333;">联系人：{{newsDate.doname}}</p>
+            <p style="color: #333;">联系电话：{{newsDate.dophone}}</p>
+						<p style="color: #333;">捐赠地址：{{newsDate.dolocal}}</p>
             <div class="mui-card-footer">
 					       <a class="mui-card-link"></a>
+                 <router-link :to="{path:'/message/showlistindex/check',query:{Oddcom:newsDate.Oddcom,OddNumbers:newsDate.OddNumbers}}">
+                        <button>物流详情</button>
+                        </router-link>
+                        <router-view></router-view>
+                         <router-link :to="{path:'/message/showlistindex/feedback',query:{feedback:newsDate.feedback}}">
+                        <button>捐赠反馈</button>
+                        </router-link>
             <button @click="del">删除记录</button>
             </div>
 					</div>
 				</div>
         </div>
-        </router-link>
      
 			
 			
@@ -24,22 +33,73 @@
  
 <script>
 import { Toast } from "mint-ui";
+let vm = {};
 export default {
   name: 'SelfCell',
   props: {
     newsDate: Object
   },
   data () {
+    vm=this
     return {
+      arrayList: [
+          {
+            "code": "SFEXPRESS",
+            "value": "顺丰速运"
+          },
+          {
+            "code": "STO",
+            "value": "申通快递"
+          },
+          {
+            "code": "YTO",
+            "value": "圆通快递"
+          },
+          {
+            "code": "HTKY",
+            "value": "百世汇通"
+          },
+          {
+            "code": "EMS",
+            "value": "EMS"
+          },
+          {
+            "code": "ZTO",
+            "value": "中通快递"
+          },
+          {
+            "code": "YUNDA",
+            "value": "韵达快递"
+          },
+          {
+            "code": "TTKDEX",
+            "value": "天天快递"
+          },
+        ],
     }
   },
+      filters: {
+      filtersTextChange: function (dataStr) {
+        let arrayList = vm.arrayList;
+        let value = '1111';
+        for (let b of arrayList) {
+          if (b.code == dataStr) {
+            value = b.value;
+            break;
+          }
+        }
+        return value;
+      }
+    },
+
+  
   computed: {
   },
   methods: {
       del(){
        console.log(this.newsDate._id+'这是要删除的id！！！')
 
-        this.$http.post("http://localhost:3000/self/delself",{
+        this.$http.post("http://47.103.14.235:27499/self/delself",{
             _id:this.newsDate._id
         }).then(result => {
         console.log(result.body+'这是result！！！！');

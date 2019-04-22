@@ -28,6 +28,8 @@ import Cgname from '../components/tabbar/Myinfo/cgname.vue'
 import Cgphone from '../components/tabbar/Myinfo/cgphone.vue'
 import Cgemail from '../components/tabbar/Myinfo/cgemail.vue'
 import Cgpass from '../components/Login/cgpass.vue'
+import Check from '../components/showlists/Check.vue'
+import feedback from '../components/showlists/feedback.vue'
 
 Vue.use(Router)
 
@@ -40,7 +42,8 @@ var router = new Router({
         },
         {
               path: '/find',
-              component: Find
+              component: Find,
+              
         },
         {
               path: '/message',
@@ -59,15 +62,23 @@ var router = new Router({
                          component: Listtologin,
                   },
                   {
+                        path: 'Check',
+                         name: 'Check',
+                         component:Check,
+                        },
+                  {
                         path: 'showlistindex',
                          name: 'showlistindex',
                          components: {
                                default:Showlistindex,
                                'showneed':Showneed,
-                               'showself':Showself
+                               'showself':Showself,
+                               'Check':Check
 
                               
                               }
+                              
+                              
                         //  children:[
                         //       {
                         //             path: 'showneed',
@@ -156,15 +167,27 @@ var router = new Router({
         },
         {
               path: '/find/newslist',
-              component: Newslist
+              component: Newslist,
         },
         {
-              path: '/find/newsinfo/:id',
+              path: '/hello/newsinfo/:id',
               component: Newsinfo
         },
         {
+            path: '/message/showlistindex/check',
+            component: Check
+      },
+      {
+            path: '/message/showlistindex/feedback',
+            component: feedback
+      },
+        {
               path: '/hello',
-              component: Hello
+              component: Hello,
+              meta: {
+                  keepAlive: true, //该字段表示该页面需要缓存
+                  isBack: false, //用于判断上一个页面是哪个
+                },
         },
         {
               path: '/test',

@@ -30,7 +30,7 @@ import { Toast } from "mint-ui";
             {    
                 console.log(this.nickname+"这是nickname")
                 console.log(this.$store.state.user.name+"这是name！！！！")
-                this.$http.post('http://localhost:3000/users/phone', {
+                this.$http.post('http://47.103.14.235:27499/users/phone', {
                      name:this.$store.state.user.name,
                      phone:this.phone
                 }).then(result => {

@@ -24,6 +24,9 @@
 import SelfTo from './selfto.vue'
 import NeedTo from './self.vue'
 export default {
+  created(){
+    console.log(this.$route.query.local+'111')
+  },
   components: {
     'self-to':SelfTo,
     'need-to':NeedTo

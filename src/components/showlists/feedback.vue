@@ -1,49 +1,71 @@
 <template>
-
-		 <router-link :to="'/hello/newsinfo/' + this.newsDate.id">
-			<div class="mui-card">
+<div class="mui-card">
+<header id="header" class="mui-bar mui-bar-nav">
+			<a @click="goback1" class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">捐赠反馈</h1>
+</header>   
+     
 				<div class="mui-card-content" >
-					<img :src="newsDate.pic" alt="" width="100%"/>
+					<img src="../../img/thanks.jpg" alt="" width="100%"/>
 				</div>
-				<!-- <div class="mui-card-content"> -->
+				<div class="mui-card-content">
 					<div class="mui-card-content-inner">
-						<p>{{newsDate.date | getYMD}}</p>
-						<p style="color: #333;">{{newsDate.title}}</p>
+						<p style="color: #333;font-size:18px;font-weight:bold;">"{{this.feedback}}"</p>
 					</div>
-				<!-- </div> -->
-				<div class="mui-card-footer">
-					<a class="mui-card-link"></a>
-					{{newsDate.author_name}}
 				</div>
         </div>
-        </router-link>
-  
-			
-			
-			
+
 </template>
- 
+
 <script>
+import { Toast } from "mint-ui";
+import api from './../../axios/api.js'
 export default {
-  name: 'NewsCell',
-  props: {
-    newsDate: Object
-  },
-  data () {
+  data() {
     return {
-    }
+        feedback:"",
+    };
   },
-  computed: {
+  created() {
+this.feedback = this.$route.query.feedback
+console.log(this.feedback+"11111")
   },
   methods: {
-    jumpPage: function () {
-      window.location.href = '/#/find/newsinfo/'+this.newsDate.id
+     goback1:function(){
+                this.$router.go(-1)
+            },
+     
+    
+    
+  },
+};
+</script>
+
+<style lang="scss">
+.content{
+  width: 94%;
+  margin-left:3%;
+}
+.newsinfo-container {
+  padding: 0 4px;
+  .title {
+    font-size: 16px;
+    text-align: center;
+    margin: 15px 0;
+    color: red;
+  }
+  .subtitle {
+    font-size: 13px;
+    color: #226aff;
+    display: flex;
+    justify-content: space-between;
+  }
+  .content {
+    img {
+      width: 100%;
     }
   }
 }
-</script>
- 
-<style scoped>
 .financial-list {
   width: 100%;
   height: 200px;

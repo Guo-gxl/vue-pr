@@ -3,6 +3,13 @@
 
      <el-row type="flex" justify="center">
         <el-form ref="loginForm" :model="self">
+             <el-form-item>
+                  <label>捐助信息</label>
+                <p>联系人：{{this.names}}</p>
+                <p>联系电话：{{this.phones}}</p>
+                <p>捐助地址：{{this.locals}}</p>
+                <p>捐助地址：{{this.need}}</p>
+            </el-form-item> 
         <el-form-item>
             <label>所在地区：</label>
             <v-distpicker @selected="sel">
@@ -26,6 +33,18 @@
             <el-form-item>
                 <input v-show="null" v-model="self.name" type="text">
             </el-form-item>
+            <el-form-item>
+                <input v-show="null" v-model="self.doname" type="text">
+            </el-form-item> 
+            <el-form-item>
+                <input v-show="null" v-model="self.dophone" type="text">
+            </el-form-item>
+            <el-form-item>
+                <input v-show="null" v-model="self.dolocal" type="text">
+            </el-form-item>
+             <el-form-item>
+                <input v-show="null" v-model="self.doneed" type="text">
+            </el-form-item>
             <div>
 				<button type="button" @click="register" class="mui-btn mui-btn-block mui-btn-primary">提交</button>
 			</div>
@@ -42,6 +61,10 @@ export default {
     data(){
         return{
             self:{},
+            locals:localStorage.getItem('local'),
+            names:localStorage.getItem('name'),
+            phones:localStorage.getItem('phone'),
+            need:localStorage.getItem('need')
         }
     },
      computed: {
@@ -61,6 +84,11 @@ export default {
             this.$refs.loginForm.model.citydata=this.citydata
             this.$refs.loginForm.model.name=this.$store.state.user.name
             this.$refs.loginForm.model.nickName=this.$store.state.user.nickName
+             this.$refs.loginForm.model.doname=this.names
+            this.$refs.loginForm.model.dophone=this.phones
+            this.$refs.loginForm.model.dolocal=this.locals
+            this.$refs.loginForm.model.doneed=this.doneed
+
 
              },
 
@@ -70,7 +98,7 @@ export default {
          this.$refs.loginForm.validate((valid) => {
         if (valid) {
             console.log(valid+'2')
-           this.$ajax.post('http://localhost:3000/self/vali', this.self).then((res) => {
+           this.$ajax.post('http://47.103.14.235:27499/self/vali', this.self).then((res) => {
                 if (res.data) {
                         Toast('提交成功，我们将很快处理您的订单');
                         this.$router.replace('/donation')
@@ -127,7 +155,7 @@ export default {
     width: 80%;
 }
 .el-form{
-    width: 80%;
+    width: 96%;
 }
   .v-enter{
 	opacity: 0;
@@ -140,5 +168,8 @@ export default {
 }
 .v-leave-active{
 	transition: all 1s ease
+}
+.el-form-item {
+     margin-bottom: 3px; 
 }
 </style>

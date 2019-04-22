@@ -80,7 +80,7 @@ export default {
      },
   
      btn(){
-         this.$http.post("http://localhost:3000/users/avatar",
+         this.$http.post("http://47.103.14.235:27499/users/avatar",
          {
                  name:this.$store.state.user.name,
                  avatar:this.avatar

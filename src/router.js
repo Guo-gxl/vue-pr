@@ -86,12 +86,15 @@ var router = new VueRouter({
                   component: Newslist
             },
             {
-                  path: '/find/newsinfo/:id',
+                  path: '/hello/newsinfo/:id',
                   component: Newsinfo
             },
             {
                   path: '/hello',
-                  component: Hello
+                  component: Hello,
+                  // meta: {
+                  //       keepAlive: true // 需要被缓存
+                  //   }
             },
             {
                   path: '/test',

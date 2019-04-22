@@ -46,7 +46,7 @@ methods:{
       //   this.newsListShow = res.articles;
       // });
       console.log(this.$store.state.user.name+'这是帐号！！！！')
-       this.$http.post("http://localhost:3000/self/showneed",{
+       this.$http.post("http://47.103.14.235:27499/self/showneed",{
          
                   name:this.$store.state.user.name
          

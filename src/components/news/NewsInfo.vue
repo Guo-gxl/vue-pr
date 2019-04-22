@@ -69,7 +69,7 @@ export default {
        
     
 
-      this.$http.get("http://localhost:3000/find/123").then(result => {
+      this.$http.get("http://47.103.14.235:27499/find/123").then(result => {
         
           //  this.newsinfo = result.body[this.$route.params.id];
            console.log(this.newsinfo+'这是newsinfo')

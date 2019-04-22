@@ -27,6 +27,9 @@
 created:function () {
             this.$emit('public_header', true);
             this.$emit('public_footer', true);
+            var data2 = localStorage.getItem('local');
+            
+            console.log(localStorage.getItem('local')+'131231321321')
         },
     }
 

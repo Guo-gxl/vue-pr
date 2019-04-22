@@ -45,7 +45,7 @@ import { Toast } from "mint-ui";
            login() {
     this.$refs.loginForm.validate((valid) => {
         if (valid) {
-            this.$ajax.post('http://localhost:3000/users/validate1', this.user).then((res) => {
+            this.$ajax.post('http://47.103.14.235:27499/users/validate1', this.user).then((res) => {
                 if (res.data) {
                     this.$emit('public_headern', true);
                    this.$emit('public_footer', true);

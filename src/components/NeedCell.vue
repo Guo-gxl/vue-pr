@@ -1,23 +1,28 @@
 <template>
 
-		 <router-link :to="'/hello/newsinfo/' + this.newsDate.id">
+		 
 			<div class="mui-card">
 				<div class="mui-card-content" >
-					<img :src="newsDate.pic" alt="" width="100%"/>
+					<img :src="needDate.pic" alt="" width="100%"/>
 				</div>
-				<!-- <div class="mui-card-content"> -->
+				<div class="mui-card-content">
 					<div class="mui-card-content-inner">
-						<p>{{newsDate.date | getYMD}}</p>
-						<p style="color: #333;">{{newsDate.title}}</p>
+						<p style="color: #333;font-size:18px;font-weight:bold;">物品需求：{{needDate.need}}</p>
+						<p>{{needDate.title}}</p>
+                        <p></p>
+                        <p style="color: #333">联系人：{{needDate.name}}</p>
+                        <p style="color: #333">联系电话：{{needDate.phone}}</p>
+                        <p style="color: #333">邮寄地址：{{needDate.local}}</p>
 					</div>
-				<!-- </div> -->
+				</div>
 				<div class="mui-card-footer">
-					<a class="mui-card-link"></a>
-					{{newsDate.author_name}}
+					<a class="mui-card-link" style="color: #333;">{{needDate.name}}  {{needDate.phone}}</a>
+                    <router-link to='/donation' @click.native="sent">
+					<a class="mui-card-link">立即捐助</a>
+                    </router-link>
 				</div>
         </div>
-        </router-link>
-  
+			
 			
 			
 			
@@ -25,9 +30,9 @@
  
 <script>
 export default {
-  name: 'NewsCell',
+  name: 'NeedCell',
   props: {
-    newsDate: Object
+    needDate: Object
   },
   data () {
     return {
@@ -36,8 +41,19 @@ export default {
   computed: {
   },
   methods: {
-    jumpPage: function () {
-      window.location.href = '/#/find/newsinfo/'+this.newsDate.id
+    // jumpPage: function () {
+    //   window.location.href = '/#/find/newsinfo/'+this.newsDate.id
+    // }
+    sent:function(){
+        console.log('ojbk')
+        console.log(this.needDate.local+'888888')
+        console.log(this.needDate.name+'77777')
+        console.log(this.needDate.phone+'66666')
+        localStorage.setItem('local', this.needDate.local);
+        localStorage.setItem('name', this.needDate.name);
+        localStorage.setItem('phone', this.needDate.phone);
+        localStorage.setItem('need', this.needDate.need);
+
     }
   }
 }

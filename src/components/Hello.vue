@@ -1,15 +1,17 @@
 <template>
   <div class="Hello-container">
+    
     <div> 
       <header id="header" class="mui-bar mui-bar-nav">
-			<a @click="goback1" class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
-			<h1 class="mui-title">慈善新闻</h1>
+			<h1 class="mui-title">易捐</h1>
 		</header>        
 </div>
     <div v-for="(item, key) in newsListShow">
+      
       <news-cell
       :newsDate="item"
       :key="key"
+      v-if="$route.meta.keepAlive"
       ></news-cell>
     </div>
   </div>
@@ -24,31 +26,44 @@ export default {
   data () {
     return {
       newsListShow: [],
+      isFirstEnter: false, //
     }
   },
-  components: {
+   components: {
     NewsCell
   },
+  beforeRouteEnter(to, from, next) {
+      if (from.name == '/hello/newsinfo/7') { // 这个name是下一级页面的路由name
+        to.meta.isBack = true; // 设置为true说明你是返回到这个页面，而不是通过跳转从其他页面进入到这个页面
+      }
+      next()
+    },
+    
+    mounted() {
+
+    },
+    activated() {
+      if (!this.$route.meta.isBack || this.isFirstEnter) {
+        this.initData() // 这里许要初始化dada()中的数据
+        this.getDataFn() // 这里发起数据请求，（之前是放在created或者mounted中，现在只需要放在这里就好了，不需要再在created或者mounted中请求！！）
+      }
+      this.$route.meta.isBack = false //请求完后进行初始化
+      this.isFirstEnter = false;//请求完后进行初始化
+    },
+    
+ 
   created() {
     this.setNewsApi();
-    
-     this.$emit('public_footer', false);
-            this.$emit('public_headern', false);
-            this.$emit('public_header', false);
   },
   methods:{
-     goback1:function(){
-                this.$router.replace('/find')
-                this.$emit('public_headern', true);
-                this.$emit('public_footer', true);
-            },
+
     setNewsApi: function() {
       // api.JH_news('/news/index')
       // .then(res => {
       //   console.log(res);
       //   this.newsListShow = res.articles;
       // });
-       this.$http.get("http://localhost:3000/find/123").then(result => {
+       this.$http.get("http://47.103.14.235:27499/find/123").then(result => {
         console.log(result.body+'这是hello的result！！！！');
            this.newsListShow = result.body;
            console.log(this.newsListShow+'这是news')

@@ -48,7 +48,7 @@ data() {
   methods: {
     //查询列表数据
      getData() {
-        this.$http.post('http://localhost:3000/find/1234/'+this.$route.params.id).then(res=>{
+        this.$http.post('http://47.103.14.235:27499/find/1234/'+this.$route.params.id).then(res=>{
          console.log(res.data+"这是刚进来！！！！！！！！！！！！！！！！！！！！！！");
          this.list =res.data.comments;
        });
@@ -73,7 +73,7 @@ data() {
            this.obj.name=this.$store.state.user.nickName,
            this.obj.con=this.obj.con
                             //重要！！！！！！！！
-       this.$http.post('http://localhost:3000/find/123/'+this.$route.params.id, { 
+       this.$http.post('http://47.103.14.235:27499/find/123/'+this.$route.params.id, { 
                    
                  name:this.$store.state.user.nickName,
                  img:this.$store.state.user.avatar,

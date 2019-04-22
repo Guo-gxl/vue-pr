@@ -64,7 +64,7 @@ import { Toast } from "mint-ui";
     this.$refs.loginForm.validate((valid) => {
         if (valid) {
             if(this.user.sex!='0'){
-            this.$ajax.post('http://localhost:3000/users/validate', this.user).then((res) => {
+            this.$ajax.post('http://47.103.14.235:27499/users/validate', this.user).then((res) => {
                 if (res.data) {
                     this.$store.dispatch('login', res.data).then(() => {
                         // this.$notify({

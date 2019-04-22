@@ -70,7 +70,7 @@
             }
 		},
 		created(){
-			    this.$http.post("http://localhost:3000/users/main",
+			    this.$http.post("http://47.103.14.235:27499/users/main",
          {
 				 name:this.$store.state.user.name,
 				 nickName:this.$store.state.user.nickName

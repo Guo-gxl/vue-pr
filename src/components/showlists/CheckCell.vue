@@ -1,34 +1,24 @@
 <template>
 
-		 <router-link :to="'/hello/newsinfo/' + this.newsDate.id">
-			<div class="mui-card">
-				<div class="mui-card-content" >
-					<img :src="newsDate.pic" alt="" width="100%"/>
-				</div>
-				<!-- <div class="mui-card-content"> -->
-					<div class="mui-card-content-inner">
-						<p>{{newsDate.date | getYMD}}</p>
-						<p style="color: #333;">{{newsDate.title}}</p>
-					</div>
-				<!-- </div> -->
-				<div class="mui-card-footer">
-					<a class="mui-card-link"></a>
-					{{newsDate.author_name}}
-				</div>
-        </div>
-        </router-link>
-  
-			
-			
-			
+            <div class="mui-card">
+				<ul class="mui-table-view">
+					<li class="mui-table-view-cell mui-media">
+						<a href="javascript:;">
+							<div class="mui-media-body">
+								{{newsDate.time}}
+								<p class='mui-ellipsis'>{{newsDate.status}}</p>
+							</div>
+						</a>
+					</li>
+				</ul>
+			</div>
+            		
 </template>
  
 <script>
+import { Toast } from "mint-ui";
 export default {
-  name: 'NewsCell',
-  props: {
-    newsDate: Object
-  },
+  name: 'CheckCell',
   data () {
     return {
     }
@@ -36,9 +26,7 @@ export default {
   computed: {
   },
   methods: {
-    jumpPage: function () {
-      window.location.href = '/#/find/newsinfo/'+this.newsDate.id
-    }
+  
   }
 }
 </script>
