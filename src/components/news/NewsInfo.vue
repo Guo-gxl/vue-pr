@@ -7,21 +7,22 @@
 			<h1 class="mui-title">新闻</h1>
 		</header>        
 </div>
-<div v-for="newsinfo3 in newsinfo2">
-    <h3 class="title">{{ newsinfo3.title }}</h3>
+<div>
+    <h3 class="title">{{ this.list.title }}</h3>
     <!-- 子标题 -->
     <p class="subtitle">
-      <span>发表时间：{{ newsinfo3.date}}</span>
-      <span>作者：{{ newsinfo3.author_name }}</span>
+      <span>发表时间：{{ this.list.date}}</span>
+      <span>作者：{{ this.list.author_name }}</span>
     </p>
-              <img :src="newsinfo3.pic" alt="" width="100%"/>
+              <img :src="this.list.pic" alt="" width="100%"/>
     <hr>
 
     <!-- 内容区域 -->
-     <div v-html="newsinfo3.content"></div> 
-</div>
+     
+<div v-html="this.list.content"></div> 
     <!-- 评论子组件区域 -->
       <comment-box></comment-box>
+</div>
   </div>
 </template>
 
@@ -36,17 +37,25 @@ export default {
       //  id: this.$route.params.id, // 将 URL 地址中传递过来的 Id值，挂载到 data上，方便以后调用
       newsinfo: {},// 新闻对象
       newsinfo2: {},
+      list:{}
     };
   },
   created() {
-    this.getNewsInfo();
+    // this.getNewsInfo();
     //  this.listMe(this.jsons123);
-    
+    this.getData()
+    console.log(this.list+'333222')
   },
   methods: {
      goback1:function(){
                 this.$router.go(-1)
             },
+               getData() {
+        this.$http.post('http://47.103.14.235:27499/find/1234/'+this.$route.params.id).then(res=>{
+         console.log(res.data+"这是刚进来！！！！！！！！！！！！！！！！！！！！！！");
+         this.list =res.data;
+       });
+     },
 
     getNewsInfo: function() {
       // 获取新闻详情

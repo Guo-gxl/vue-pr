@@ -10,7 +10,7 @@
 				</div>
 				<div class="mui-card-content">
 					<div class="mui-card-content-inner">
-						<p style="color: #333;font-size:18px;font-weight:bold;">"{{this.feedback}}"</p>
+						<p style="color: #333;font-size:18px;font-weight:bold;">{{this.feedback}}</p>
 					</div>
 				</div>
         </div>
@@ -27,8 +27,14 @@ export default {
     };
   },
   created() {
+    
 this.feedback = this.$route.query.feedback
+console.log(this.$route.query.feedback+"11111222")
 console.log(this.feedback+"11111")
+console.log(JSON.stringify(this.feedback)+'55555')
+if(JSON.stringify(this.feedback)==undefined){
+  this.feedback='暂时还没有收到反馈，请耐心等待'
+}
   },
   methods: {
      goback1:function(){

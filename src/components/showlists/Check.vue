@@ -6,7 +6,19 @@
 			<a @click="goback1" class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
 			<h1 class="mui-title">物流详情</h1>
 		</header>  
-     </div>      
+     </div>
+     <div class="mui-card" style="margin-bottom:20px">
+				<ul class="mui-table-view">
+					<li class="mui-table-view-cell mui-media">
+						<a href="javascript:;">
+							<div class="mui-media-body">
+								<p class='mui-ellipsis' style="color: #333;font-size:10px">快递公司：{{this.Oddcom|filtersTextChange}}</p>
+								<p class='mui-ellipsis' style="color: #333;">运单编号：{{this.OddNumbers}}</p>
+							</div>
+						</a>
+					</li>
+				</ul>
+			</div>     
 <div v-for="(item, key) in Showself">
       <Check-cell
       :newsDate="item"
@@ -21,14 +33,64 @@
 import { Toast } from "mint-ui";
 import api from './../../axios/api.js'
 import CheckCell from './CheckCell.vue'
+let vm = {};
 export default {
   data() {
+    vm=this
     return {
     Showself:[],
     Oddcom:"",
-    OddNumbers:""
-    };
+    OddNumbers:"",
+    
+      arrayList: [
+          {
+            "code": "SFEXPRESS",
+            "value": "顺丰速运"
+          },
+          {
+            "code": "STO",
+            "value": "申通快递"
+          },
+          {
+            "code": "YTO",
+            "value": "圆通快递"
+          },
+          {
+            "code": "HTKY",
+            "value": "百世汇通"
+          },
+          {
+            "code": "EMS",
+            "value": "EMS"
+          },
+          {
+            "code": "ZTO",
+            "value": "中通快递"
+          },
+          {
+            "code": "YUNDA",
+            "value": "韵达快递"
+          },
+          {
+            "code": "TTKDEX",
+            "value": "天天快递"
+          },
+        ],
+    }
   },
+   filters: {
+      filtersTextChange: function (dataStr) {
+        let arrayList = vm.arrayList;
+        let value = '1111';
+        for (let b of arrayList) {
+          if (b.code == dataStr) {
+            value = b.value;
+            break;
+          }
+        }
+        return value;
+      }
+    },
     components: {
     CheckCell
   },
@@ -60,17 +122,16 @@ export default {
               Toast('查询失败');
            }
        });
-       console.log(JSON.stringify(this.Showself).length+'31555551231321321321321111111')
-      //  if(JSON.stringify(this.Showself).length==2){
-      //         Toast('查询失败');
-      //      }
     }
     
   },
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
+ .mui-card{
+  margin: 0px
+} 
 .content{
   width: 94%;
   margin-left:3%;

@@ -19,6 +19,9 @@
 import { Toast } from "mint-ui";
 export default {
   name: 'CheckCell',
+  props: {
+    newsDate: Object
+  },
   data () {
     return {
     }
@@ -106,4 +109,7 @@ export default {
   height: 0.24rem;
   margin-top: 0.09rem;
 }
+ .mui-card{
+  margin: 0px
+} 
 </style>
