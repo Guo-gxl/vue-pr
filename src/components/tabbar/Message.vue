@@ -27,6 +27,7 @@
 <script>
 import ShowNeed from '../showlists/showneed.vue'
 import ShowSelf from '../showlists/showself.vue'
+import { Indicator } from 'mint-ui';
  export default {
 components: {
     'show-need':ShowNeed,
@@ -74,6 +75,7 @@ components: {
 created:function () {
             this.$emit('public_header', true);
             this.$emit('public_footer', true);
+            Indicator.close()
         },
     }
 
@@ -82,8 +84,27 @@ created:function () {
 
 <style lang="scss" scoped>
 .active{
-    color: #fff;
-    background-color: #007aff;
+    color: #fff !important;
+    background-color:salmon;
+    border-left: 1px solid salmon;
+    border-right: 1px solid salmon;
+    border-color: salmon;
 }
+
+a{
+    color: salmon
+}
+.mui-btn-primary{
+    color: #fff;
+        background-color: salmon;
+}
+.mui-segmented-control .mui-control-item{
+        color: salmon;
+     border-color: salmon; 
+     border-left: 1px solid salmon;
+}
+
+
+
 
 </style>

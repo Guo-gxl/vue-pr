@@ -7,14 +7,11 @@
 				</div>
 				<!-- <div class="mui-card-content"> -->
 					<div class="mui-card-content-inner">
-						<p>{{newsDate.date | getYMD}}</p>
-						<p style="color: #333;">{{newsDate.title}}</p>
+						<p style="color: #333;font-size:18px">{{newsDate.title}}</p>
+            <p>{{newsDate.date | getYMD}}    {{newsDate.author_name}}</p>
+						
 					</div>
 				<!-- </div> -->
-				<div class="mui-card-footer">
-					<a class="mui-card-link"></a>
-					{{newsDate.author_name}}
-				</div>
         </div>
         </router-link>
   
@@ -44,6 +41,10 @@ export default {
 </script>
  
 <style scoped>
+.mui-card{
+  margin: 0px;
+  margin-bottom: 10px
+}
 .financial-list {
   width: 100%;
   height: 200px;

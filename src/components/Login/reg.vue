@@ -199,4 +199,11 @@ import { Toast } from "mint-ui";
            .el-input{
                width: 75%
            }
+           .mui-title {
+    font-size: 19px;
+    }
+    .mui-btn-primary{
+    color: #fff;
+        background-color: salmon;
+}
 </style>

@@ -20,7 +20,7 @@
             </el-form-item>
             <div class="mui-content-padded">
 				<button id='login' type="button" @click="login" class="mui-btn mui-btn-block mui-btn-primary">登录</button>
-				<div class="link-area"><router-link to="/res">注册账号</router-link> <span class="spliter">|</span> <a id='forgetPassword'>忘记密码</a>
+				<div class="link-area"><router-link to="/res">注册账号</router-link>
 				</div>
 			</div>
         </el-form>
@@ -182,8 +182,8 @@ import { Toast } from "mint-ui";
            .el-input{
                width: 75%
            }
-           .mui-bar-tab .mui-tab-item.mui-active {
-     color: #007aff; 
+    .mui-bar-tab .mui-tab-item.mui-active {
+     color:salmon; 
 }
 .mui-bar{
 	position:absolute;
@@ -191,6 +191,13 @@ import { Toast } from "mint-ui";
 .mui-bar-nav{
     position:absolute;
 }
-
+.mui-btn-primary{
+        color: #fff;
+    /* border: 1px solid #007aff; */
+    background-color: salmon;
+}
+.mui-title {
+    font-size: 19px;
+    }
 
 </style>

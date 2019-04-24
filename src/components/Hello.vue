@@ -18,6 +18,7 @@
 </template>
  
 <script>
+import { Indicator } from 'mint-ui';
 import api from './../axios/api.js'
 import NewsCell from './NewsCell.vue'
  
@@ -54,6 +55,8 @@ export default {
  
   created() {
     this.setNewsApi();
+     Indicator.close()
+    Indicator.open('加载中')
   },
   methods:{
 
@@ -66,7 +69,8 @@ export default {
        this.$http.get("http://47.103.14.235:27499/find/123").then(result => {
         console.log(result.body+'这是hello的result！！！！');
            this.newsListShow = result.body;
-           console.log(this.newsListShow+'这是news')
+           console.log(this.newsListShow+'这是news');
+           Indicator.close()
        });
     },
   }
@@ -113,4 +117,7 @@ export default {
 	padding-bottom: 50px;
 	overflow-x:hidden;
 }
+.mui-title {
+    font-size: 19px;
+    }
 </style>

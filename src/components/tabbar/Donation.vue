@@ -9,6 +9,7 @@
 
 
 <script>
+import { Indicator } from 'mint-ui';
  export default {
    directives:{
     trigger:{
@@ -30,6 +31,7 @@ created:function () {
             var data2 = localStorage.getItem('local');
             
             console.log(localStorage.getItem('local')+'131231321321')
+            Indicator.close()
         },
     }
 

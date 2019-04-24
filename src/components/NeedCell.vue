@@ -60,6 +60,10 @@ export default {
 </script>
  
 <style scoped>
+.mui-card{
+  margin: 0px;
+  margin-bottom: 10px
+}
 .financial-list {
   width: 100%;
   height: 200px;
@@ -133,5 +137,8 @@ export default {
   width: 0.18rem;
   height: 0.24rem;
   margin-top: 0.09rem;
+}
+a {
+    color:salmon;
 }
 </style>

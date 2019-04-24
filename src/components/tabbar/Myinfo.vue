@@ -9,10 +9,12 @@
 
 
 <script>
+import { Indicator } from 'mint-ui';
  export default {
      created:function () {
             this.$emit('public_header', true);
             this.$emit('public_footer', true);
+            Indicator.close()
         },
    directives:{
     trigger:{

@@ -5,8 +5,8 @@
 					<a href="javascript:;">
 						<img class="mui-media-object mui-pull-left" :src="item.img">
 						<div class="mui-media-body">
-							{{item.name}}
-							<p>{{item.con}}</p>
+						<p>	{{item.name}}</p>
+							{{item.con}}
 						</div>
 					</a>
 				</li>
@@ -160,6 +160,10 @@ data() {
 </script>
 
 <style lang="scss" scoped>
+.mui-media-object{
+    width: 42px;
+    height: 42px;
+}
 .mse{
   margin-left:3%;
 }

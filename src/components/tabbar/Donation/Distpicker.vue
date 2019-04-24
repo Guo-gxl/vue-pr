@@ -1,7 +1,7 @@
 <template>
   <div class="distpicker-address-wrapper">
     <template v-if="type != 'mobile'">
-      <select @change="getCities" v-model="currentProvince" :disabled="disabled || provinceDisabled">
+      <select @change="getCities" v-model="currentProvince" :disabled="disabled || provinceDisabled" style="border: 1px solid rgba(0, 0, 0, 0.2) !important">
         <option :value="placeholders.province">{{ placeholders.province }}</option>
         <option v-for="(item, index) in provinces"
                 :value="item"
@@ -10,7 +10,7 @@
         </option>
       </select>
       <template v-if="!onlyProvince">
-        <select @change="getAreas" v-model="currentCity" :disabled="disabled || cityDisabled">
+        <select @change="getAreas" v-model="currentCity" :disabled="disabled || cityDisabled" style="border: 1px solid rgba(0, 0, 0, 0.2) !important">
           <option :value="placeholders.city">{{ placeholders.city }}</option>
           <option v-for="(item, index) in cities"
                   :value="item"
@@ -18,7 +18,7 @@
             {{ item }}
           </option>
         </select>
-        <select v-if="!hideArea" v-model="currentArea" :disabled="disabled || areaDisabled">
+        <select v-if="!hideArea" v-model="currentArea" :disabled="disabled || areaDisabled" style="border: 1px solid rgba(0, 0, 0, 0.2) !important">
           <option :value="placeholders.area">{{ placeholders.area }}</option>
           <option v-for="(item, index) in areas "
                   :value="item"

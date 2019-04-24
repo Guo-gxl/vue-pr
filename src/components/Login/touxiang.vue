@@ -17,6 +17,8 @@
 </template>
 
 <script>
+import { Indicator } from 'mint-ui';
+
 import { Toast } from "mint-ui";
 export default {
   data() {
@@ -80,12 +82,14 @@ export default {
      },
   
      btn(){
+       Indicator.open('加载中')
          this.$http.post("http://47.103.14.235:27499/users/avatar",
          {
                  name:this.$store.state.user.name,
                  avatar:this.avatar
          }).then(result => {
         console.log(result.body+'!!!!!!');
+        Indicator.close()
          Toast({
                                  message: '上传成功',
                             });
@@ -107,7 +111,12 @@ export default {
     width: 94%;
   margin-left:3%;
 }
-.mui-btn-block {
-    padding: 15px;
+.mui-btn-primary{
+    color: #fff;
+        background-color: salmon;
+}
+.mui-btn-block{
+    margin-bottom: 0px;
+    padding: 5px
 }
 </style>

@@ -22,7 +22,7 @@
 		                    <div class="mui-media-body">物品需求</div>
                             </router-link>
                             </li>
-    </ul> -->
+    </ul> -->   
       <div v-for="(item, key) in newsListShow">
       <need-cell
       :needDate="item"
@@ -37,6 +37,7 @@
 import api from'./../../axios/api.js'
 import { Toast } from "mint-ui";
 import NeedCell from '../NeedCell.vue'
+import { Indicator } from 'mint-ui';
 export default {
   // props: {
   //   newsDate: Object
@@ -45,6 +46,8 @@ export default {
             this.$emit('public_header', true);
             this.$emit('public_footer', true);
             this.setNewsApi();
+            Indicator.close()
+            Indicator.open('加载中')
         },
   data() {
     return {
@@ -74,6 +77,7 @@ export default {
            this.newsListShow = result.body;
            console.log(JSON.stringify(this.newsListShow))
            console.log(this.newsListShow+'这是news')
+           Indicator.close()
        });
     },
     //  setNewsApi: function() {
@@ -112,4 +116,7 @@ export default {
 .mui-col-xs-4 {
     width: 50%;   //调整中间的导航栏宽度
 }
+.mui-title {
+    font-size: 19px;
+    }
 </style>

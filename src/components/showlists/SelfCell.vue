@@ -17,7 +17,7 @@
                         </router-link>
                         <router-view></router-view>
                          <router-link :to="{path:'/message/showlistindex/feedback',query:{feedback:newsDate.feedback}}">
-                        <button>捐赠反馈</button>
+                        <button>感谢信</button>
                         </router-link>
             <button @click="del">删除记录</button>
             </div>
@@ -191,5 +191,8 @@ export default {
   width: 0.18rem;
   height: 0.24rem;
   margin-top: 0.09rem;
+}
+.mui-card-content-inner{
+  padding-bottom: 0px
 }
 </style>

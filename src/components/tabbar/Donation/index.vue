@@ -76,8 +76,27 @@ export default {
 .mui-btn-block{
 padding: 50px 0;
 }
-  .active{
+
+.active{
+    color: #fff !important;
+    background-color:salmon;
+    border-left: 1px solid salmon;
+    border-right: 1px solid salmon;
+    border-color: salmon;
+}
+.mui-segmented-control .mui-control-item{
+        color: salmon;
+     border-color: salmon; 
+     border-left: 1px solid salmon;
+}
+.mui-control-item{
+  color: salmon; 
+}
+a{
+    color: salmon
+}
+.mui-btn-primary{
     color: #fff;
-    background-color: #007aff;
+        background-color: salmon;
 }
 </style>

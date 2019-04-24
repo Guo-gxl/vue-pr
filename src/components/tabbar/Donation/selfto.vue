@@ -1,17 +1,21 @@
 <template>
  <div>    
+     <div class="mui-card">
+				<div class="mui-card-content">
+					<div class="mui-card-content-inner">
+						<p style="color: #333">物品需求：{{this.need}}</p>
+                        <p style="color: #333">联系人：{{this.names}}</p>
+                        <p style="color: #333">联系电话：{{this.phones}}</p>
+                        <p style="color: #333">邮寄地址：{{this.locals}}</p>
+					</div>
+				</div>
+        </div>
+        <div class="mui-card">
      <el-row type="flex" justify="center">
         <el-form ref="loginForm" :model="self">
-            <el-form-item>
-                  <label>捐助信息</label>
-                <p>联系人：{{this.names}}</p>
-                <p>联系电话：{{this.phones}}</p>
-                <p>捐助地址：{{this.locals}}</p>
-                <p>物品需求：{{this.need}}</p>
-            </el-form-item> 
               <el-form-item>
                   <label>快递公司</label>
-                <select v-model="self.Oddcom" class="mui-input-clear mui-input" placeholder="未选择">
+        <select v-model="self.Oddcom" style="border: 1px solid rgba(0, 0, 0, 0.2) !important" placeholder="未选择">
             <option value="0" selected>请选择快递公司</option>
             <option value="HTKY">百世汇通</option>
             <option value="EMS">EMS</option>
@@ -21,7 +25,7 @@
              <option value="YTO">圆通快递</option>
             <option value="YUNDA">韵达快递</option>
              <option value="ZTO">中通快递</option>
-                 </select>
+        </select>
             </el-form-item> 
             <el-form-item>
                   <label>快递单号</label>
@@ -49,11 +53,12 @@
              <el-form-item>
                 <input v-show="null" v-model="self.doneed" type="text">
             </el-form-item>
-            <div>
+            <div class="mui-card-footer">
 				<button type="button" @click="register" class="mui-btn mui-btn-block mui-btn-primary">提交</button>
 			</div>
         </el-form>
     </el-row>
+    </div>
  </div>
 </template>
 
@@ -163,12 +168,17 @@ else{
 }
 .mui-btn-block{
     margin-bottom: 0px;
+    padding: 5px
 }
 .el-form-item {
      margin-bottom: 3px; 
 }
 .el-form{
     width: 96%;
+}
+.mui-btn-primary{
+    color: #fff;
+        background-color: salmon;
 }
 
 </style>

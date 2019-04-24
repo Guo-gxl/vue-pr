@@ -1,20 +1,20 @@
 <template>
     <div class="app-container">
 <nav class="mui-bar mui-bar-tab">
+			<router-link class="mui-tab-item" to="/find">
+				<span class="mui-icon mui-icon-extra mui-icon-extra-order"></span>
+				<span class="mui-tab-label">需求</span>
+			</router-link>
 			<router-link class="mui-tab-item" to="/hello">
 				<span class="mui-icon mui-icon-extra mui-icon-extra-find"></span>
 				<span class="mui-tab-label">资讯</span>
-			</router-link>
-			<router-link class="mui-tab-item" to="/find">
-				<span class="mui-icon mui-icon-extra mui-icon-extra-find"></span>
-				<span class="mui-tab-label">需求</span>
 			</router-link>
 			<router-link class="mui-tab-item" to="/donation">
 				<span class="mui-icon mui-icon-extra mui-icon-extra-gift"></span>
 				<span class="mui-tab-label">捐赠</span>
 			</router-link>
 			<router-link class="mui-tab-item" to="/message">
-				<span class="mui-icon mui-icon-chat"></span>
+				<span class="mui-icon mui-icon-extra mui-icon-extra-topic"></span>
 				<span class="mui-tab-label">捐赠订单</span>
 			</router-link>
 			<router-link class="mui-tab-item" to="/myinfo">

@@ -26,7 +26,7 @@ import Header from'./components/public/Header.vue'
 import Footer from'./components/public/Footer.vue'
 import Headern from './components/public/Headern.vue'
 
-
+import { Indicator } from 'mint-ui';
 import { Toast } from 'mint-ui';
 //按需导入toust
 export default{
@@ -84,7 +84,7 @@ name: 'App',
 
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .app-container{
     padding-top: 40px;
 	padding-bottom: 20px;
@@ -111,7 +111,23 @@ img{
 .mui-col-xs-4 {
     width: 25%;
 }
+.mui-bar-tab .mui-tab-item.mui-active {
+    color:salmon;
+}
+a {
+    text-decoration: none;
+    color: salmon;
+}
+.mui-btn-primary,{
+	border: 0px solid;
+	color: #fff;
+        background-color: salmon;
+}
 
+
+.mui-segmented-control{
+     border-color: salmon; 
+}
 
 
 </style>

@@ -1,34 +1,58 @@
 <template>
-  <div class="app-container">
+  <div class="app2-container">
     <!-- 大标题 -->
      <div> 
       <header id="header" class="mui-bar mui-bar-nav">
 			<a @click="goback1" class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
-			<h1 class="mui-title">新闻</h1>
+			<h1 class="mui-title">{{ this.list.title }}</h1>
 		</header>        
 </div>
 <div>
-    <h3 class="title">{{ this.list.title }}</h3>
-    <!-- 子标题 -->
-    <p class="subtitle">
-      <span>发表时间：{{ this.list.date}}</span>
-      <span>作者：{{ this.list.author_name }}</span>
-    </p>
-              <img :src="this.list.pic" alt="" width="100%"/>
-    <hr>
-
-    <!-- 内容区域 -->
-     
-<div v-html="this.list.content"></div> 
+    	<div class="mui-card" v-show="ab">
+				<div class="mui-card-content" >
+					<img :src="this.list.pic" alt="" width="100%"/>
+				</div>
+				<!-- <div class="mui-card-content"> -->
+					<div class="mui-card-content-inner">
+            <p style="color: #333;font-size:20px">{{ this.list.title }}</p>
+            <p>{{ this.list.date}}</p>
+            <p>{{ this.list.author_name }}</p>
+						<p style="color: #333;font-size:16px;" v-html="this.list.content"></p>
+						<p style="color: #333;"></p>
+					</div>
+				<!-- </div> -->
+				<div class="mui-card-footer">
+					<p style="margin-bottom: 0px;color: #333;font-size:16px;">评论：</p>
+				</div>
+        </div>
     <!-- 评论子组件区域 -->
-      <comment-box></comment-box>
+      <!-- <comment-box></comment-box> -->
+      <div v-show="ab">
+			<ul class="mui-table-view">
+				<li class="mui-table-view-cell mui-media" v-for="item in list2">
+						<img class="mui-media-object mui-pull-left" :src="item.img">
+						<div class="mui-media-body">
+						<p>{{item.name}}</p>
+						<p style="color: #333;">{{item.con}}</p>
+						</div>
+				</li>
+			</ul>
+      <br>
+         <div class="mse">请输入评论内容</div>
+       <div class="add">
+      <textarea v-model="obj.con"></textarea>
+      <button class="mui-btn mui-btn-block mui-btn-primary" @click="addList">添加</button>
+    </div>
+  </div>
 </div>
   </div>
 </template>
 
 <script>
 // 1. 导入 评论子组件
+import { Indicator } from 'mint-ui';
  import comment from "../subcomponents/comment.vue";
+ import { Toast } from "mint-ui";
 import api from '../../axios/api.js'
 export default {
   data() {
@@ -37,7 +61,16 @@ export default {
       //  id: this.$route.params.id, // 将 URL 地址中传递过来的 Id值，挂载到 data上，方便以后调用
       newsinfo: {},// 新闻对象
       newsinfo2: {},
-      list:{}
+      list:{},
+      list2: [],
+      obj: {
+        //将添加的数据存到obj对象中
+        name: "",
+        con: ""
+      },
+      text:"",
+      // namereturn:this.$store.state.user.name
+      ab:false
     };
   },
   created() {
@@ -45,7 +78,13 @@ export default {
     //  this.listMe(this.jsons123);
     this.getData()
     console.log(this.list+'333222')
+    Indicator.open('加载中');
   },
+  computed: {
+            user () {
+                return this.$store.state.user
+            }
+        },
   methods: {
      goback1:function(){
                 this.$router.go(-1)
@@ -54,8 +93,46 @@ export default {
         this.$http.post('http://47.103.14.235:27499/find/1234/'+this.$route.params.id).then(res=>{
          console.log(res.data+"这是刚进来！！！！！！！！！！！！！！！！！！！！！！");
          this.list =res.data;
+         this.list2 =res.data.comments;
+         this.ab=true;
+         Indicator.close();
        });
      },
+         addList(){
+           Indicator.open('加载中');
+      console.log(this.$route.params.id)               //获取文章ID
+      console.log(this.$store.state.user+"dasdsadasdsa")       //获取用户数据
+      if(typeof(this.$store.state.user)=='undefined'){          //如果用户没登录
+        Toast({
+                                 message: '请先登录后再评论',
+                            });
+          }                 
+         else{                                     //否则
+               this.tolist()               //执行tolost这个函数！！！！
+          }},
+        tolist(){
+
+           this.obj.name=this.$store.state.user.nickName,
+           this.obj.con=this.obj.con
+                            //重要！！！！！！！！
+       this.$http.post('http://47.103.14.235:27499/find/123/'+this.$route.params.id, { 
+                   
+                 name:this.$store.state.user.nickName,
+                 img:this.$store.state.user.avatar,
+                 con:this.obj.con
+                                                          
+              })                                                                  //重要！！！！！！！！
+         .then(res => {                                                     //重要！！！！！！！！
+           // console.log("请求成功"+res.data.data);                        //重要！！！！！！！！
+           console.log(JSON.stringify(res.data.comments)+'这是转换成JSON格式的添加后的');  
+           console.log(res.data.comments+"这是没有转换的！！！！！！")                                //重要！！！！！！！！
+           this.list2 = res.data.comments; 
+           Indicator.close();
+                Toast({
+                                 message: '评论成功',
+                            })                                       //重要！！！！！！！！
+         })                                                                  //重要！！！！！！！！
+          },    
 
     getNewsInfo: function() {
       // 获取新闻详情
@@ -117,7 +194,20 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
+.app2-container{
+  padding-top: 5px
+}
+li{
+  border:0px
+}
+.mui-card{
+  margin: 0px;
+}
+.mui-media-object{
+    width: 42px;
+    height: 42px;
+}
 .content{
   width: 94%;
   margin-left:3%;
@@ -141,5 +231,20 @@ export default {
       width: 100%;
     }
   }
+ 
+} 
+.mui-btn-primary{
+    color: #fff;
+        background-color: salmon;
+}
+.mui-btn-block {
+    left:2%;
+    font-size: 18px;
+    display: block;
+    width: 96%;
+    margin-bottom: 10px;
+}
+.mui-title{
+  font-size: 16px
 }
 </style>

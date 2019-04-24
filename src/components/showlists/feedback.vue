@@ -47,7 +47,10 @@ if(JSON.stringify(this.feedback)==undefined){
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
+.mui-card{
+  margin: 0px
+}
 .content{
   width: 94%;
   margin-left:3%;

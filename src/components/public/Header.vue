@@ -32,6 +32,9 @@ img{
 	width: 100%;
 	height: 100%;
 }
+.mui-bar{
+    background-color: salmon
+}
 
 
 </style>

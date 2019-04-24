@@ -20,6 +20,9 @@ export default{
 </script>
 
 <style lang="scss" scoped>
+.mui-title {
+    font-size: 19px;
+    }
 
 
 
