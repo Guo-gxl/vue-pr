@@ -170,8 +170,9 @@ var router = new Router({
               component: Newslist,
         },
         {
-              path: '/hello/newsinfo/:id',
-              component: Newsinfo
+              path: '/newsinfo/:id',
+              name:'Newsinfo',
+              component: Newsinfo,
         },
         {
             path: '/message/showlistindex/check',
@@ -184,10 +185,8 @@ var router = new Router({
         {
               path: '/hello',
               component: Hello,
-              meta: {
-                  keepAlive: true, //该字段表示该页面需要缓存
-                  isBack: false, //用于判断上一个页面是哪个
-                },
+              name:'Hello'
+
         },
         {
               path: '/test',

@@ -111,8 +111,9 @@ export default {
                              Toast({
                                  message: '已删除',
                             });  
-                            this.$router.replace('/message') 
-          
+                            // this.$router.replace('/message') 
+                            // this.reload()
+          this.$emit('success',true);       
            
        });
    },

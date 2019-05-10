@@ -6,6 +6,7 @@
       <Self-cell
       :newsDate="item"
       :key="key"
+      v-on:success="success()"
       ></Self-cell>
     </div>
   </div>
@@ -39,6 +40,9 @@ created() {
             this.$emit('public_footer', true);
         },
 methods:{
+  success(){
+        this.setSelfApi()
+     },
       setSelfApi: function() {
       // api.JH_news('/news/index')
       // .then(res => {
@@ -62,7 +66,9 @@ methods:{
 </script>
 
 
-<style>
-
+<style scoped>
+.Hello-container{
+min-height: 580px;
+}
 
 </style>

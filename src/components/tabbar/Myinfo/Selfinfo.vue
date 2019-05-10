@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class="self-container">
 	<div> 
       <header  id="header" class="mui-bar mui-bar-nav">
 			<a @click="goback1" class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
@@ -115,6 +115,10 @@
     }
 </script>
 <style lang="scss" scoped>
+.self-container{
+  min-height:680px; 
+
+}
 .mui-scroll-wrapper{
     position: inherit;
 }

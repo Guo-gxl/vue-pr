@@ -1,5 +1,5 @@
 <template>
-    <div class="app-container">
+    <div>
 <nav class="mui-bar mui-bar-tab">
 			<router-link class="mui-tab-item" to="/find">
 				<span class="mui-icon mui-icon-extra mui-icon-extra-order"></span>
@@ -32,10 +32,8 @@ export default{
 </script>
 
 <style lang="scss" scoped>
-.app-container{
-    padding-top: 40px;
-	padding-bottom: 50px;
-	overflow-x:hidden;
+.mui-bar-tab{
+	z-index: 9999;
 }
 img{
 	width: 100%;

@@ -41,17 +41,25 @@
 					</div>
 				</div>
 				<router-view></router-view>
+				<app-footer v-if="footer_show"></app-footer>
     </div>
 </template>
 
 <script>
+import Footer from'../../components/public/Footer.vue'
     export default {
 		data(){
 			return{
 			  ava:false,
-			  defa:true
+			  defa:true,
+			   header_show:true,
+		   footer_show:true,
+		   headern_show:true,
 			}
 		},
+		components: {
+		 'app-footer':Footer,
+        },
         methods: {
             login () {
                 this.$store.state.isLogin='0'
@@ -91,4 +99,7 @@
     }
 </script>
 <style lang="scss" scoped>
+.mui-page-content{
+	background-color: aqua;
+}
 </style>

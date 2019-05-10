@@ -91,7 +91,7 @@ export default {
              this.$refs.loginForm.model.doname=this.names
             this.$refs.loginForm.model.dophone=this.phones
             this.$refs.loginForm.model.dolocal=this.locals
-            this.$refs.loginForm.model.doneed=this.doneed
+            this.$refs.loginForm.model.doneed=this.need
 
 
              },

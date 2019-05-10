@@ -1,6 +1,5 @@
 <template>
 <div class="app-container">
-  <span>请先登录</span>
    <router-link class="mui-tab-item" to="/login">
 				<div class="mui-content">
 			<div class="mui-content-padded">
@@ -18,6 +17,14 @@
 
 <script>
 export default {
+    data(){
+      return {
+		  header_show:true,
+		   footer_show:true,
+		   headern_show:true,
+ 
+      }
+  },
         created:function () {
             this.$emit('public_header', true);
             this.$emit('public_footer', true);
@@ -29,21 +36,18 @@ export default {
 
 <style lang="scss" scoped>
 .app-container{
-    padding-top: 40px;
-	padding-bottom: 50px;
-	overflow-x:hidden;
-  margin: 0 auto;
-   text-align:center;
+  margin-top: 60px;
+  min-height:620px; 
 }
 .mui-content{
   width: 50%;
-  height: 20%;
+  height: 40px;
   margin: 0 auto;
    text-align:center;
 }
 .mui-btn{
   width: 50%;
-  height: 20%;
+  height: 40px;
 }
 
 

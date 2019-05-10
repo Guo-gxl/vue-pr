@@ -1,5 +1,5 @@
 <template>
- <div>    
+ <div class="app-container">    
      <div class="mui-card">
 				<div class="mui-card-content">
 					<div class="mui-card-content-inner">

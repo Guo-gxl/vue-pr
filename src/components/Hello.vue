@@ -7,12 +7,12 @@
 		</header>        
 </div>
     <div v-for="(item, key) in newsListShow">
-      
+      <keep-alive>
       <news-cell
       :newsDate="item"
       :key="key"
-      v-if="$route.meta.keepAlive"
       ></news-cell>
+      </keep-alive>
     </div>
   </div>
 </template>
@@ -23,7 +23,7 @@ import api from './../axios/api.js'
 import NewsCell from './NewsCell.vue'
  
 export default {
-  name: 'index',
+  name: 'Hello',
   data () {
     return {
       newsListShow: [],
@@ -33,12 +33,6 @@ export default {
    components: {
     NewsCell
   },
-  beforeRouteEnter(to, from, next) {
-      if (from.name == '/hello/newsinfo/7') { // 这个name是下一级页面的路由name
-        to.meta.isBack = true; // 设置为true说明你是返回到这个页面，而不是通过跳转从其他页面进入到这个页面
-      }
-      next()
-    },
     
     mounted() {
 
@@ -113,6 +107,7 @@ export default {
   height: 1rem;
 }
 .Hello-container{
+  height: 800px;
   padding-top: 5px;
 	padding-bottom: 50px;
 	overflow-x:hidden;

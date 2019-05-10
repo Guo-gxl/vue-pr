@@ -55,6 +55,7 @@ import { Indicator } from 'mint-ui';
  import { Toast } from "mint-ui";
 import api from '../../axios/api.js'
 export default {
+  name:"NewsInfo",
   data() {
     id: this.$route.params.id
     return {
@@ -79,7 +80,15 @@ export default {
     this.getData()
     console.log(this.list+'333222')
     Indicator.open('加载中');
+     this.$emit('public_footer', false);
   },
+  beforeRouteEnter(to, from, next) {
+    console.log(to, from, next)
+      if (to.name == 'Newsinfo') { // 这个name是下一级页面的路由name
+      to.meta.keepAlive = false; // 设置为true说明你是返回到这个页面，而不是通过跳转从其他页面进入到这个页面
+      }
+      next()
+    },
   computed: {
             user () {
                 return this.$store.state.user
@@ -88,6 +97,7 @@ export default {
   methods: {
      goback1:function(){
                 this.$router.go(-1)
+                this.$emit('public_footer', true);
             },
                getData() {
         this.$http.post('http://47.103.14.235:27499/find/1234/'+this.$route.params.id).then(res=>{

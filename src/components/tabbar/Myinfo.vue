@@ -1,16 +1,31 @@
 <template>
-<div>
+<div class="myinfo-container">
     <router-view></router-view>
 
-        <router-link to="/myinfo/main" v-trigger v-trigger2 v-mydirective></router-link>   
+        
+        <router-link to="/myinfo/main" v-trigger v-trigger2 v-mydirective></router-link> 
+        <app-footer v-if="footer_show"></app-footer>  
   </div>
 
 </template>
 
 
 <script>
+import Footer from'../../components/public/Footer.vue'
 import { Indicator } from 'mint-ui';
  export default {
+      data(){
+      return {
+		  header_show:true,
+		   footer_show:true,
+		   headern_show:true,
+ 
+      }
+  },
+  components: {
+		 'app-footer':Footer,
+
+  },
      created:function () {
             this.$emit('public_header', true);
             this.$emit('public_footer', true);
@@ -56,7 +71,10 @@ import { Indicator } from 'mint-ui';
 </script>
 
 
-<style>
+<style scoped>
+.myinfo-container{
+min-height: 680px;
+}
 
 
 </style>

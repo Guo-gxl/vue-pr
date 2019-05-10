@@ -59,7 +59,7 @@ import { Toast } from "mint-ui";
                                  message: '欢迎你,' + res.data.nickName + '!',
                             });
                         this.$store.state.isLogin='100'
-                        this.$router.replace('/myinfo/main')
+                        this.$router.go(-1)
                     })
                 } else {
                     // this.$message({

@@ -1,6 +1,6 @@
 <template>
 
-		 <router-link :to="'/hello/newsinfo/' + this.newsDate.id">
+		 <router-link :to="'/newsinfo/' + this.newsDate.id">
 			<div class="mui-card">
 				<div class="mui-card-content" >
 					<img :src="newsDate.pic" alt="" width="100%"/>
@@ -32,6 +32,13 @@ export default {
   },
   computed: {
   },
+   beforeRouteEnter(to, from, next) {
+    console.log(to, from, next)
+      if (to.name == 'Newsinfo') { // 这个name是下一级页面的路由name
+      to.meta.keepAlive = false; // 设置为true说明你是返回到这个页面，而不是通过跳转从其他页面进入到这个页面
+      }
+      next()
+    },
   methods: {
     jumpPage: function () {
       window.location.href = '/#/find/newsinfo/'+this.newsDate.id

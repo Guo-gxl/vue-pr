@@ -15,8 +15,10 @@
 
        <transition name="app" mode="out-in">
         <!-- 中间放router-view 区域-->
+         <keep-alive include="Hello,Find">
         <router-view v-on:public_headern="public_headern" v-on:public_header="public_header" v-on:public_footer="public_footer"></router-view>
-        </transition>
+         </keep-alive>
+		</transition>
         <!-- 底部tabbar区域 -->
 <app-footer v-if="footer_show"></app-footer>
     </div>
@@ -61,6 +63,14 @@ name: 'App',
 		 'app-footer':Footer,
 		 'app-headern':Headern
   },
+  beforeRouteEnter(to, from, next) {
+    console.log(to, from, next)
+      if (to.name == 'Newsinfo') { // 这个name是下一级页面的路由name
+      to.meta.keepAlive = false; // 设置为true说明你是返回到这个页面，而不是通过跳转从其他页面进入到这个页面
+      }
+      next()
+	},
+	
   methods:{
       //是否显示头部
       public_header:function (bool) {
@@ -87,7 +97,7 @@ name: 'App',
 <style lang="scss">
 .app-container{
     padding-top: 40px;
-	padding-bottom: 20px;
+	padding-bottom: 50px;
 	overflow-x:hidden;
 }
 img{

@@ -10,7 +10,7 @@
             快递上门
             </router-link>
             <router-view to="/showneed"></router-view>
-            <router-view></router-view>
+            <router-view></router-view>     
 				</div>
 			</div>
            

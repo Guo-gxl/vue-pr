@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="find-container">
     <!-- <mt-swipe :auto="4000">
       <!--在组件中使用v-for循环一定要使用key -->
       <!-- <mt-swipe-item  v-for="item in lunbotuList">
@@ -42,6 +42,7 @@ export default {
   // props: {
   //   newsDate: Object
   // },
+  name:"Find",
   created:function () {
             this.$emit('public_header', true);
             this.$emit('public_footer', true);
@@ -118,5 +119,11 @@ export default {
 }
 .mui-title {
     font-size: 19px;
+    }
+    .find-container{
+      height: 800px;
+        padding-top: 5px;
+	padding-bottom: 50px;
+	overflow-x:hidden;
     }
 </style>

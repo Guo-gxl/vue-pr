@@ -107,7 +107,8 @@ export default {
                                  message: '已删除',
                             });
                             // this.$router.go(0)
-                            this.$router.replace('/message')                
+                            // this.$router.replace('/message') 
+                            this.$emit('success',true);       
           
            
        });
